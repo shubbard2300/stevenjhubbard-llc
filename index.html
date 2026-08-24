@@ -564,6 +564,75 @@ footer{border-top:var(--rule);padding:26px 0}
   .portrait img{filter:grayscale(1)}
   a{color:#14459c}
 }
+
+/* ── Work card: real affordance ──────────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.work-open{
+  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent-2);background:none;border:0;padding:0;cursor:pointer;font-weight:500;
+  transition:color .22s;
+}
+.work-open::after{content:"";position:absolute;inset:0;z-index:3}
+.work-open i{font-style:normal;transition:transform .22s}
+.work:hover .work-open{color:#fff}
+.work:hover .work-open i{transform:translateX(3px)}
+.work-open:focus-visible{outline:none}
+.work:has(.work-open:focus-visible){outline:2px solid var(--accent-2);outline-offset:-2px}
+
+/* ── Project modal ───────────────────────────────────────── */
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(12px,3vw,40px)}
+.modal-backdrop{position:absolute;inset:0;background:rgba(4,6,10,.86);backdrop-filter:blur(8px);animation:fade .3s ease}
+@keyframes fade{from{opacity:0}}
+.modal-panel{
+  position:relative;z-index:1;width:min(1080px,100%);max-height:100%;
+  background:var(--ground);border:var(--rule);
+  display:flex;flex-direction:column;overflow:hidden;
+  animation:pop .42s cubic-bezier(.16,1,.3,1);
+}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.985)}}
+.modal-scroll{overflow-y:auto;display:grid}
+@media (min-width:940px){.modal-scroll{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+.modal-media{background:var(--panel);border-bottom:var(--rule);position:relative;min-height:220px}
+@media (min-width:940px){.modal-media{border-bottom:0;border-right:var(--rule)}}
+.modal-media img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.modal-media figcaption{
+  position:absolute;left:0;bottom:0;background:var(--ground);
+  border-top:var(--rule);border-right:var(--rule);padding:7px 12px;
+}
+.modal-body{padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;gap:18px}
+.modal-body h3{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.022em;font-variation-settings:"wdth" 106}
+.modal-kicker{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.modal-detail{color:var(--ink-2);font-size:14.5px;line-height:1.62;display:grid;gap:12px}
+.modal-detail p{margin:0}
+.modal-detail ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.modal-detail li{position:relative;padding-left:19px}
+.modal-detail li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--accent)}
+.modal-meta{border-top:var(--rule);padding-top:16px;display:grid;gap:10px}
+.modal-meta div{display:flex;justify-content:space-between;gap:16px}
+.modal-meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.modal-meta dd{margin:0;font-size:13px;color:var(--ink);text-align:right}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.modal-close{
+  position:absolute;top:0;right:0;z-index:4;width:44px;height:44px;
+  background:var(--ground);border:0;border-left:var(--rule);border-bottom:var(--rule);
+  color:var(--ink-2);cursor:pointer;font-size:20px;line-height:1;transition:.22s;
+}
+.modal-close:hover{background:var(--accent);color:#fff}
+.modal-foot{
+  border-top:var(--rule);display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:10px 14px;background:var(--ground-2);flex:none;
+}
+.modal-foot button{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  background:none;border:1px solid var(--line);color:var(--ink-2);padding:8px 14px;cursor:pointer;transition:.22s;
+}
+.modal-foot button:hover:not(:disabled){border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
+.modal-foot button:disabled{opacity:.35;cursor:default}
+body.modal-open{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.modal-panel,.modal-backdrop{animation:none}}
+@media print{.modal{display:none!important}}
 </style>
 
 <div class="sheet" aria-hidden="true">
@@ -824,7 +893,7 @@ footer{border-top:var(--rule);padding:26px 0}
     <div class="sec-head rv">
       <div>
         <span class="mono">05 &mdash; Selected work</span>
-        <h2>Eleven projects,<br>one throughline.</h2>
+        <h2>Selected work,<br>and counting.</h2>
       </div>
       <p class="lede">Different clients, different stacks, same job: find the seam where the systems don&rsquo;t meet, and close it.</p>
     </div>
@@ -841,108 +910,217 @@ footer{border-top:var(--rule);padding:26px 0}
 
     <div class="work-grid rv" id="workGrid">
 
-      <article class="work" data-cat="architecture development design">
+      <article class="work" data-cat="architecture development design" data-id="eyeappeal">
         <span class="flag">Case study</span>
-        <div class="work-img"><img src="assets/webp/eyeappeal.webp" alt="Eye Appeal Inc. collectible grading platform" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/eyeappeal.webp" alt="Eye Appeal Inc." loading="lazy"></div>
         <div class="work-body">
           <h3>Eye Appeal Inc.</h3>
           <p>Community-driven collectible grading platform featuring an AI-powered Rate-to-Reveal game, the proprietary EyeQ+ scoring metric, and a global registry for sports card collectors.</p>
           <div class="work-tags"><span>SvelteKit</span><span>Vercel</span><span>Lighthouse 95+</span><span>AI</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Eye Appeal Inc.</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>A grading platform for sports card collectors, built around three things that had to work together: an AI-powered <strong>Rate-to-Reveal</strong> game, the proprietary <strong>EyeQ+</strong> scoring metric, and a global registry deep enough that collectors would trust it as a system of record.</p><p>I architected the API integrations and workflow pipelines connecting internal systems to third-party platforms &mdash; each one designed as a reusable pattern rather than a one-off, so the next integration cost days instead of weeks.</p><ul><li>Cloud-hosted SvelteKit app on Vercel at <strong>Lighthouse 95+</strong> with sub-second load times</li><li>Zero-downtime weekly production releases on two-week Agile iterations</li><li>Automated QA and data-validation in the pipeline &mdash; <strong>30% less manual development effort</strong></li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Senior Architect &amp; Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Mar 2025 &ndash; Feb 2026</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Development &middot; Design</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn btn--solid" href="https://eyeappealinc.com" target="_blank" rel="noopener">Visit site <i>&rarr;</i></a><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="architecture ecommerce development">
+      <article class="work" data-cat="architecture ecommerce development" data-id="odysay">
         <div class="work-img"><img src="assets/webp/odysay.webp" alt="OdySay" loading="lazy"></div>
         <div class="work-body">
           <h3>OdySay</h3>
           <p>Architecture and Magento development &mdash; catalog structure, checkout flow, and the integration work behind a storefront built to scale past its first good quarter.</p>
           <div class="work-tags"><span>Magento</span><span>Architecture</span><span>Integrations</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for OdySay</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>Storefront architecture and Magento build. The catalog structure and checkout flow were designed for what the business would look like after growth, not the shape it had on launch day &mdash; the difference between a store that scales and one that gets rebuilt in eighteen months.</p><p>Integration work tied the storefront to the systems behind it so inventory, orders, and product data stayed consistent without anyone reconciling spreadsheets.</p><ul><li>Catalog and checkout architecture built for growth headroom</li><li>Third-party integrations designed as reusable patterns</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Architect &amp; Magento Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Contract</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Ecommerce &middot; Development</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="architecture design development">
+      <article class="work" data-cat="architecture design development" data-id="terrafirma">
         <div class="work-img"><img src="assets/webp/terrafirma.webp" alt="Terra Firma Music" loading="lazy"></div>
         <div class="work-body">
           <h3>Terra Firma Music</h3>
           <p>Architecture, design, and development end to end &mdash; identity through build, with a front end tuned for media-heavy pages that still load fast.</p>
           <div class="work-tags"><span>Design</span><span>Front end</span><span>CMS</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Terra Firma Music</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>End to end: identity, design, architecture, and build. Music sites are media-heavy by nature &mdash; artwork, audio, video &mdash; and the usual outcome is a beautiful page that takes eight seconds to become useful.</p><p>The front end was tuned around that constraint from the start rather than optimized after the fact.</p><ul><li>Full identity through production build</li><li>Media-heavy pages tuned for fast first render</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Architect, Designer &amp; Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Contract</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Design &middot; Development</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="architecture design development ecommerce">
+      <article class="work" data-cat="architecture design development ecommerce" data-id="liquorstore">
         <div class="work-img"><img src="assets/webp/liquorstore.webp" alt="The Liquor Store SF" loading="lazy"></div>
         <div class="work-body">
           <h3>The Liquor Store SF</h3>
           <p>Architecture, design, and development for a San Francisco hospitality brand &mdash; booking, menus, and a storefront that reads as well on a phone at the bar as on a desktop.</p>
           <div class="work-tags"><span>Design</span><span>WordPress</span><span>Commerce</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for The Liquor Store SF</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>A San Francisco hospitality brand where most traffic arrives on a phone, often in low light, often standing up. Booking and menus had to work in that context first and look good on a desktop second.</p><p>Design, architecture, and build were all mine, which meant the responsive behaviour was a design decision rather than a development compromise.</p><ul><li>Mobile-first booking and menu flows</li><li>Storefront integrated with the brand site</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Architect, Designer &amp; Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Contract</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Design &middot; Development &middot; Ecommerce</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="architecture cms security">
+      <article class="work" data-cat="architecture cms security" data-id="fpc">
         <div class="work-img"><img src="assets/webp/fpc.webp" alt="First Presbyterian Church" loading="lazy"></div>
         <div class="work-body">
           <h3>First Presbyterian Church</h3>
           <p>Architectural and WordPress site improvements &mdash; structure, accessibility, and hardening for a volunteer-maintained site that had to stay maintainable.</p>
           <div class="work-tags"><span>WordPress</span><span>Accessibility</span><span>Hardening</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for First Presbyterian Church</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>The constraint that shaped everything: the people maintaining this site after I left are volunteers, not developers. Anything clever enough to need me later was the wrong answer.</p><p>Structural and accessibility improvements, plus security hardening on a WordPress install that had accumulated the usual plugin debt.</p><ul><li>Restructured for volunteer maintenance</li><li>Accessibility and security hardening pass</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Architect &amp; WordPress Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Contract</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Cms &middot; Security</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="ecommerce architecture design development">
+      <article class="work" data-cat="ecommerce architecture design development" data-id="prima">
         <div class="work-img"><img src="assets/webp/prima.webp" alt="Prima Studio" loading="lazy"></div>
         <div class="work-body">
           <h3>Prima Studio</h3>
-          <p>Ecommerce architecture, design, and development: Magento front and back end, a custom HTML5 video player, and analytics instrumentation &mdash; a <strong>70% performance gain</strong> over stock Magento.</p>
+          <p>Ecommerce architecture, design, and development: Magento front and back end, a custom HTML5 video player, and analytics instrumentation.</p>
           <div class="work-tags"><span>Magento</span><span>HTML5 video</span><span>Analytics</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Prima Studio</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>Magento front and back end, a custom HTML5 video player built when that was still an argument rather than a default, and conversion instrumentation wired through the whole funnel.</p><p>Stock Magento was the baseline everyone accepted at the time. It did not have to be.</p><ul><li><strong>70% performance gain</strong> over stock Magento</li><li>Custom HTML5 video player and analytics instrumentation</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Ecommerce Architect &amp; Lead Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Dec 2011 &ndash; Sep 2013</dd></div>
+            <div><dt>Discipline</dt><dd>Ecommerce &middot; Architecture &middot; Design &middot; Development</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="ecommerce architecture design">
-        <div class="work-img"><img src="assets/webp/llsupply.webp" alt="L&amp;L Supply" loading="lazy"></div>
+      <article class="work" data-cat="ecommerce architecture design" data-id="llsupply">
+        <div class="work-img"><img src="assets/webp/llsupply.webp" alt="L'L Supply" loading="lazy"></div>
         <div class="work-body">
           <h3>L&amp;L Supply</h3>
           <p>Ecommerce architecture, migration, and design &mdash; legacy to Magento 2.3, with 10,000+ products and 500,000 customer records imported without losing a row.</p>
           <div class="work-tags"><span>Magento 2.3</span><span>Migration</span><span>Braintree</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for L'L Supply</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>A migration off legacy ecommerce onto Magento 2.3, carrying <strong>10,000+ products</strong> and <strong>500,000 customer records</strong>. Data migrations are where ecommerce projects quietly fail &mdash; a dropped row is a customer who can't log in.</p><p>I also consolidated a tangle of legacy payment processors onto a single Braintree integration, and mentored a five-person team through the transition.</p><ul><li><strong>20% improvement in site performance</strong> and a conversion lift</li><li><strong>30% higher team productivity</strong> and code quality after mentoring</li><li><strong>40% faster onboarding</strong> from code review standards and documentation templates</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Ecommerce Architect &amp; Senior Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Feb 2020 &ndash; Mar 2021</dd></div>
+            <div><dt>Discipline</dt><dd>Ecommerce &middot; Architecture &middot; Design</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="ecommerce architecture">
+      <article class="work" data-cat="ecommerce architecture" data-id="tivo">
         <div class="work-img"><img src="assets/webp/tivo.webp" alt="TiVo" loading="lazy"></div>
         <div class="work-body">
           <h3>TiVo</h3>
-          <p>Led the transition to Magento Enterprise 2.4 &mdash; stakeholder coordination, timeline management, and a migration that landed clean. Conversions up 18%, cart abandonment down 15%.</p>
+          <p>Led the transition to Magento Enterprise 2.4 &mdash; stakeholder coordination, timeline management, and a migration that landed clean.</p>
           <div class="work-tags"><span>Magento EE 2.4</span><span>WebMethods</span><span>Snowflake</span><span>AEM</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for TiVo</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>The Magento Enterprise 2.4 transition was the visible half. The harder half was underneath: WebMethods and ERP integrations in Java and SOAP/XML against SQL Server, unifying POS, order, and product data across commerce and content systems.</p><p>POS and transaction data fed into Snowflake to drive segmentation modelling in Salesforce Commerce Cloud, while legacy on-premise CMS platforms moved to cloud-hosted WordPress, Magento, and AEM.</p><ul><li><strong>Conversions up 18%</strong>, <strong>cart abandonment down 15%</strong> via AEM personalization</li><li><strong>30% less manual financial reconciliation</strong> from the WebMethods/ERP integration</li><li>Legacy payment systems consolidated onto Braintree</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Senior Ecommerce Architect</dd></div>
+            <div><dt>Engagement</dt><dd>Dec 2020 &ndash; May 2022</dd></div>
+            <div><dt>Discipline</dt><dd>Ecommerce &middot; Architecture</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="design development ecommerce">
-        <div class="work-img"><img src="assets/webp/coupdetat.webp" alt="Coup D&rsquo;Etat" loading="lazy"></div>
+      <article class="work" data-cat="design development ecommerce" data-id="coupdetat">
+        <div class="work-img"><img src="assets/webp/coupdetat.webp" alt="Coup D'Etat" loading="lazy"></div>
         <div class="work-body">
           <h3>Coup D&rsquo;Etat</h3>
-          <p>Designed and developed, with conversions to show for it &mdash; a 20% lift in CTAs, a custom WooCommerce module worth a 40% gain in sales efficiency, and a bespoke gallery experience.</p>
+          <p>Designed and developed, with conversions to show for it &mdash; plus a Storybook component library that cut deployment cycles.</p>
           <div class="work-tags"><span>WooCommerce</span><span>React</span><span>Storybook</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Coup D'Etat</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>Six years of engagement, which is long enough to stop shipping features and start shipping standards. I established the architectural, security, and performance benchmarks used across all client work, and built the Storybook component library the team worked from.</p><p>On the storefront side: a custom WooCommerce module, a bespoke gallery experience, and analytics-driven optimization rather than opinion-driven redesign.</p><ul><li><strong>40% increase in online sales efficiency</strong> from the custom WooCommerce module</li><li><strong>20% lift in CTAs</strong> from streamlined product displays</li><li><strong>35% better engagement, 20% lower bounce</strong>, guided by Google Analytics</li><li><strong>30% shorter deployment cycles</strong> from the Storybook library</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Senior Architect &amp; Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Jan 2019 &ndash; Mar 2025</dd></div>
+            <div><dt>Discipline</dt><dd>Design &middot; Development &middot; Ecommerce</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="architecture cms ecommerce development">
+      <article class="work" data-cat="architecture cms ecommerce development" data-id="lexmark">
         <div class="work-img"><img src="assets/webp/lexmark.webp" alt="Lexmark" loading="lazy"></div>
         <div class="work-body">
           <h3>Lexmark</h3>
-          <p>Integrated AEM with Magento for a seamless shopping experience, using Magento for inventory and cart &mdash; a <strong>30% increase in user engagement</strong> and a <strong>15% higher conversion rate</strong>.</p>
+          <p>Integrated AEM with Magento for a seamless shopping experience, using Magento for inventory and cart.</p>
           <div class="work-tags"><span>AEM</span><span>Magento 2.4</span><span>React</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Lexmark</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>AEM and Magento are both convinced they own the customer experience. The integration &mdash; built as custom plugins &mdash; let AEM handle content and Magento handle inventory and cart, without the seam showing to anyone shopping.</p><p>I also rebuilt the Magento 2.4 subscription module to offer custom toner color options, and wired React components to fetch real-time printer information via API.</p><ul><li><strong>30% increase in user engagement</strong>, <strong>15% higher conversion rate</strong></li><li><strong>35% faster page loads</strong> from refactored CMS components</li><li><strong>20% higher satisfaction</strong> and 10% more subscription sales from the module rebuild</li><li><strong>20% less manual testing overhead</strong> from automated QA regression coverage</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Front-End AEM Developer &amp; Magento Architect</dd></div>
+            <div><dt>Engagement</dt><dd>Oct 2022 &ndash; Mar 2023</dd></div>
+            <div><dt>Discipline</dt><dd>Architecture &middot; Cms &middot; Ecommerce &middot; Development</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
-      <article class="work" data-cat="cms development security">
+      <article class="work" data-cat="cms development security" data-id="tenx">
         <div class="work-img"><img src="assets/webp/tenx.webp" alt="Ten-X" loading="lazy"></div>
         <div class="work-body">
           <h3>Ten-X</h3>
-          <p>Site enhancements that improved functionality and user experience &mdash; plus SEO and auto-build deployment work that lifted conversions 35% and traffic 25%.</p>
+          <p>Site enhancements that improved functionality and user experience &mdash; plus SEO and auto-build deployment work.</p>
           <div class="work-tags"><span>WordPress</span><span>SEO</span><span>CI/CD</span></div>
+          <button class="work-open" type="button" aria-haspopup="dialog">View case study<span class="sr-only"> for Ten-X</span> <i>&rarr;</i></button>
         </div>
+        <template class="work-detail">
+          <div class="modal-detail"><p>WordPress platform enhancements on a property marketplace, driven from team meetings I led rather than tickets handed down. I contributed to the technical specifications and architecture design alongside the build.</p><p>The deployment side mattered as much as the features: auto-build procedures to production with real testing and validation, replacing a release process that depended on someone remembering the steps.</p><ul><li><strong>35% increase in conversions</strong> from SEO work</li><li><strong>25% more site traffic</strong> from platform enhancements</li><li>Automated build and deploy to production with validation</li></ul></div>
+          <dl class="modal-meta">
+            <div><dt>Role</dt><dd>Senior WordPress Developer</dd></div>
+            <div><dt>Engagement</dt><dd>Sep 2015 &ndash; Jan 2018</dd></div>
+            <div><dt>Discipline</dt><dd>Cms &middot; Development &middot; Security</dd></div>
+          </dl>
+          <div class="modal-actions"><a class="btn" href="#contact" data-close>Discuss a project like this</a></div>
+        </template>
       </article>
 
     </div>
-  </div>
 </section>
 
 <!-- ══ TIMELINE ══════════════════════════════════════════ -->
@@ -1288,6 +1466,32 @@ footer{border-top:var(--rule);padding:26px 0}
 
 </main>
 
+<div class="modal" id="projectModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" data-close aria-label="Close">&times;</button>
+    <div class="modal-scroll">
+      <figure class="modal-media" style="margin:0">
+        <img id="modalImg" alt="">
+        <figcaption class="mono" id="modalCap"></figcaption>
+      </figure>
+      <div class="modal-body">
+        <div class="modal-kicker">
+          <span class="mono" id="modalDisc"></span>
+        </div>
+        <h3 id="modalTitle"></h3>
+        <div id="modalSlot"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" data-prev>&larr; Previous</button>
+      <span class="mono" id="modalCount"></span>
+      <button type="button" data-next>Next &rarr;</button>
+    </div>
+  </div>
+</div>
+
+
 <footer>
   <div class="wrap foot-in">
     <span class="mono">&copy; 2026 Steven Hubbard LLC &mdash; All rights reserved</span>
@@ -1434,6 +1638,92 @@ footer{border-top:var(--rule);padding:26px 0}
         w.classList.toggle('hide', !show);
       });
     });
+  });
+
+
+  /* ── Project modal ────────────────────────────────────── */
+  var modal   = document.getElementById('projectModal');
+  var mImg    = document.getElementById('modalImg');
+  var mCap    = document.getElementById('modalCap');
+  var mTitle  = document.getElementById('modalTitle');
+  var mDisc   = document.getElementById('modalDisc');
+  var mSlot   = document.getElementById('modalSlot');
+  var mCount  = document.getElementById('modalCount');
+  var prevBtn = modal.querySelector('[data-prev]');
+  var nextBtn = modal.querySelector('[data-next]');
+  var lastFocus = null;
+  var current = -1;
+
+  function visibleWorks() {
+    return works.filter(function (w) { return !w.classList.contains('hide'); });
+  }
+
+  function renderProject(i) {
+    var list = visibleWorks();
+    if (!list.length) return;
+    current = (i + list.length) % list.length;
+    var w = list[current];
+
+    var img = w.querySelector('.work-img img');
+    mImg.src = img.getAttribute('src');
+    mImg.alt = img.getAttribute('alt') || '';
+    var title = w.querySelector('h3').textContent;
+    mTitle.textContent = title;
+    mCap.textContent = title;
+    mDisc.textContent = (w.dataset.cat || '').split(' ').map(function (c) {
+      return c.charAt(0).toUpperCase() + c.slice(1);
+    }).join(' \u00b7 ');
+
+    mSlot.innerHTML = '';
+    mSlot.appendChild(w.querySelector('.work-detail').content.cloneNode(true));
+
+    mCount.textContent = (current + 1) + ' / ' + list.length;
+    var solo = list.length < 2;
+    prevBtn.disabled = solo;
+    nextBtn.disabled = solo;
+    modal.querySelector('.modal-scroll').scrollTop = 0;
+  }
+
+  function openModal(w, trigger) {
+    lastFocus = trigger || document.activeElement;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    renderProject(visibleWorks().indexOf(w));
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  works.forEach(function (w) {
+    var trigger = w.querySelector('.work-open');
+    trigger.addEventListener('click', function () { openModal(w, trigger); });
+  });
+
+  prevBtn.addEventListener('click', function () { renderProject(current - 1); });
+  nextBtn.addEventListener('click', function () { renderProject(current + 1); });
+
+  modal.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close]')) {
+      // let in-page anchors run, but always dismiss the dialog
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'ArrowLeft')  { renderProject(current - 1); return; }
+    if (e.key === 'ArrowRight') { renderProject(current + 1); return; }
+    if (e.key !== 'Tab') return;
+    var f = modal.querySelectorAll('button:not(:disabled), a[href], [tabindex]:not([tabindex="-1"])');
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
   /* ── Timeline accordion ───────────────────────────────── */
