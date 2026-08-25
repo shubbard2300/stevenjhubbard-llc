@@ -12,6 +12,7 @@ Hand-written HTML, CSS, and vanilla JavaScript. No framework, no build step, no 
 | `assets/webp/` | Project, portrait, and testimonial images (WebP) |
 | `assets/raw/` | Original PNG/JPEG sources, kept so images can be re-derived at other sizes |
 | `build-inline.py` | Base64-inlines every local asset into one portable file |
+| `favicon.svg` | Icon master — the PNG/ICO set is generated from these same coordinates |
 | `dist/index.html` | Generated single-file build. Do not hand-edit — rerun the script. |
 
 ## Develop
