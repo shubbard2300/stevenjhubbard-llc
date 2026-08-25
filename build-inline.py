@@ -23,6 +23,12 @@ def inline(m):
 
 html = re.sub(r'src="([^"]+)"', inline, html)
 
+# The artifact host wraps the file in its own <!doctype>/<html>/<head>/<body>,
+# so strip ours. The deployed site keeps them — that is where lang= matters.
+html = re.sub(r'^\s*<!doctype html>\s*\n', '', html, flags=re.I)
+html = re.sub(r'^\s*<html[^>]*>\s*\n', '', html, flags=re.I)
+html = re.sub(r'\n\s*</html>\s*$', '\n', html, flags=re.I)
+
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 io.open(OUT, 'w', encoding='utf-8').write(html)
 print('wrote %s  (%.2f MB)' % (OUT, os.path.getsize(OUT) / 1048576.0))

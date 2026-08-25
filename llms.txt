@@ -1,0 +1,45 @@
+# Steven J. Hubbard
+
+> Solutions Architect and Full Stack Developer with 25+ years building enterprise
+> digital platforms. Deep specialization in Adobe Experience Manager and Edge
+> Delivery Services, with commerce and CMS work across Shopify, Adobe Commerce,
+> and WordPress. Based on the US West Coast, available remote nationwide for
+> contract and full-time work.
+
+## Contact
+
+- Email: contact@stevenjhubbard.com
+- Phone: +1 (415) 359-7606
+- LinkedIn: https://www.linkedin.com/in/steven-j-hubbard
+- Site: https://www.stevenjhubbard.com/
+- Resume (PDF): https://docs.google.com/document/d/17_sxsXf3ZbdT7IAo0H9Ib8kadmn61ezU7PSleaOlY9I/export?format=pdf
+
+## What he is hired for
+
+- Solution and domain architecture — as-is/to-be modeling, transformation roadmaps, technical debt tracking
+- Integration architecture — REST, GraphQL, SOAP/WSDL, WebMethods, event-driven and SOA patterns
+- Adobe Experience Manager and Edge Delivery Services
+- Ecommerce architecture and development — Adobe Commerce/Magento, Shopify, SFCC, WooCommerce
+- CMS development and migration — AEM, WordPress, Drupal, Squarespace
+- Data and reporting — Snowflake pipelines, SQL Server, ERP and commerce reconciliation
+- Security and performance — OAuth, SAML, SSO, PCI compliance, Core Web Vitals
+
+## Current and recent work
+
+- Steven Hubbard LLC — Independent Consultant and Solutions Architect, Feb 2026 to present
+- Eye Appeal Inc. — Senior Architect and Developer, Mar 2025 to Feb 2026
+- Horizon Media — Web Director and Solutions Architect, Oct 2024 to Dec 2025
+- Coup D'Etat — Senior Architect and Developer, Jan 2019 to Mar 2025
+- Lexmark — Front-End AEM Developer and Magento Architect, Oct 2022 to Mar 2023
+- TiVo — Senior Ecommerce Architect, Dec 2020 to May 2022
+
+## Selected clients
+
+AKQA, Code and Theory, Euro RSCG, Marriott, Sears, AT&T, Lowe's, Coca-Cola,
+Procter & Gamble, Frito-Lay, UCSF Children's Hospital, United Healthcare.
+
+## Notes
+
+- 25+ years shipping for the web, since 1999.
+- Two years putting AI and LLM tooling into production workflows; formally AI-certified.
+- Education: BA Computer Science, Academy of Art University. Also University of Oregon, Portland State University.

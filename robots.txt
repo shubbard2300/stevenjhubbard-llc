@@ -1,0 +1,23 @@
+# https://www.stevenjhubbard.com/
+
+User-agent: *
+Allow: /
+
+# AI crawlers are welcome. This site exists to be found by people hiring
+# architects, and increasingly that search starts in an answer engine.
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.stevenjhubbard.com/sitemap.xml
