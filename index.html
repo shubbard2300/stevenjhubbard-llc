@@ -309,10 +309,10 @@ section{position:relative}
 /* ── About ───────────────────────────────────────────────── */
 .about{display:grid;gap:clamp(36px,4.4vw,60px)}
 @media (min-width:1000px){.about{grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:clamp(44px,5vw,80px)}}
-.portrait{position:relative;border:var(--rule);overflow:hidden;background:var(--panel)}
+.portrait{position:relative;border:var(--rule);overflow:hidden;background:var(--panel);max-width:240px}
 .portrait img{
-  width:100%;height:100%;display:block;
-  aspect-ratio:662/800;object-fit:cover;object-position:50% 26%;
+  width:100%;display:block;
+  aspect-ratio:1/1;object-fit:cover;object-position:50% 10%;
   filter:grayscale(1) contrast(1.06) brightness(.94);
   transition:filter .6s ease,transform .8s cubic-bezier(.2,.8,.2,1);
 }
@@ -326,7 +326,7 @@ section{position:relative}
   background:var(--ground);border-top:var(--rule);border-right:var(--rule);
   padding:9px 14px;
 }
-.fact-list{margin-top:26px;border-top:var(--rule)}
+.fact-list{margin-top:22px;border-top:var(--rule)}
 .fact-list div{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:var(--rule)}
 .fact-list dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 .fact-list dd{margin:0;font-size:13.5px;text-align:right;color:var(--ink)}
@@ -733,8 +733,8 @@ body.modal-open{overflow:hidden}
     <div class="about">
       <div class="rv">
         <figure class="portrait" style="margin:0">
-          <img src="assets/webp/portrait.webp" alt="Steven J. Hubbard" width="662" height="800" loading="lazy">
-          <figcaption class="portrait-tag mono">Steven J. Hubbard &middot; West Coast, USA</figcaption>
+          <img src="assets/webp/portrait.webp" alt="Steven J. Hubbard" width="240" height="240" loading="lazy">
+          <figcaption class="portrait-tag mono">West Coast, USA</figcaption>
         </figure>
         <dl class="fact-list">
           <div><dt>Discipline</dt><dd>Solutions Architecture</dd></div>
