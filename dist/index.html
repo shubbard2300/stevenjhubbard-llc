@@ -572,11 +572,28 @@ footer{border-top:var(--rule);padding:26px 0}
 .rv.in{opacity:1;transform:none}
 .rv-d1{transition-delay:.07s}.rv-d2{transition-delay:.14s}.rv-d3{transition-delay:.21s}
 
+/* Reduced motion. Movement is what causes vestibular discomfort — travel,
+   zoom, parallax and anything that loops forever. Opacity and colour do not.
+   So suppress the former and keep the latter, rather than flattening the page
+   into something completely inert. */
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .rv{opacity:1;transform:none}
-  .name b{transform:none}
-  .track{animation:none}
+  /* ambient loops off entirely */
+  .hero-scan{animation:none!important;opacity:0}
+  .track{animation:none!important}
+  .pulse{animation:none!important}
+  .roleline .caret{animation:none!important;opacity:0}
+
+  /* entrances fade, they no longer travel */
+  .name b{animation:none!important;transform:none!important}
+  .rv{transform:none!important;transition:opacity .6s ease!important}
+  .modal-panel{animation:fade .3s ease!important}
+
+  /* hover reads through colour, not movement */
+  .work-img img,.portrait img{transition:filter .45s ease!important;transform:none!important}
+  .work:hover .work-img img,.portrait:hover img{transform:none!important}
+  .btn:hover{transform:none!important}
+  .btn i,.work-open i{transition:none!important}
+  .btn:hover i,.work:hover .work-open i{transform:none!important}
 }
 
 /* ── Print sheet ─────────────────────────────────────────── */
@@ -1591,7 +1608,18 @@ body.modal-open{overflow:hidden}
   if (out) {
     var caret = '<span class="caret">_</span>';
     if (reduce) {
-      out.innerHTML = roles.join(' &middot; ');
+      // crossfade rather than type — no movement, still alive
+      out.style.transition = 'opacity .45s ease';
+      var i = 0;
+      out.textContent = roles[0];
+      setInterval(function () {
+        out.style.opacity = '0';
+        setTimeout(function () {
+          i = (i + 1) % roles.length;
+          out.textContent = roles[i];
+          out.style.opacity = '1';
+        }, 450);
+      }, 3200);
     } else {
       var ri = 0, ci = 0, erasing = false;
       (function type() {
