@@ -339,7 +339,10 @@ section{position:relative}
 @media (min-width:1000px){.about{grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:clamp(44px,5vw,80px)}}
 .portrait{position:relative;border:var(--rule);overflow:hidden;background:var(--panel);max-width:240px}
 .portrait img{
-  width:100%;display:block;
+  /* height:auto is load-bearing. The width/height HTML attributes map to a
+     presentational height hint; without an author height declaration that hint
+     wins, the box becomes definite, and aspect-ratio is ignored entirely. */
+  width:100%;height:auto;display:block;
   aspect-ratio:1/1;object-fit:cover;object-position:50% 10%;
   filter:grayscale(1) contrast(1.06) brightness(.94);
   transition:filter .6s ease,transform .8s cubic-bezier(.2,.8,.2,1);
@@ -779,7 +782,7 @@ body.modal-open{overflow:hidden}
     <div class="about">
       <div class="rv">
         <figure class="portrait" style="margin:0">
-          <img src="assets/webp/portrait.webp" alt="Steven J. Hubbard" width="240" height="240" loading="lazy">
+          <img src="assets/webp/portrait.webp" alt="Steven J. Hubbard" width="640" height="725" loading="lazy">
           <figcaption class="portrait-tag mono">West Coast, USA</figcaption>
         </figure>
         <dl class="fact-list">
