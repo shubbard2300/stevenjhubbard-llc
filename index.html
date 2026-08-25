@@ -620,15 +620,16 @@ footer{border-top:var(--rule);padding:26px 0}
   animation:pop .42s cubic-bezier(.16,1,.3,1);
 }
 @keyframes pop{from{opacity:0;transform:translateY(18px) scale(.985)}}
-.modal-scroll{overflow-y:auto;display:grid}
-@media (min-width:940px){.modal-scroll{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
-.modal-media{background:var(--panel);border-bottom:var(--rule);position:relative;min-height:220px}
-@media (min-width:940px){.modal-media{border-bottom:0;border-right:var(--rule)}}
-.modal-media img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.modal-media figcaption{
-  position:absolute;left:0;bottom:0;background:var(--ground);
-  border-top:var(--rule);border-right:var(--rule);padding:7px 12px;
+.modal-scroll{overflow-y:auto;display:block}
+.modal-media{
+  background:var(--ground-2);border-bottom:var(--rule);
+  padding:clamp(14px,1.8vw,22px);
 }
+.modal-media img{
+  width:100%;height:auto;display:block;
+  border:1px solid var(--line-2);background:var(--panel);
+}
+.modal-media figcaption{display:none}
 .modal-body{padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;gap:18px}
 .modal-body h3{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.022em;font-variation-settings:"wdth" 106}
 .modal-kicker{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
@@ -938,7 +939,7 @@ body.modal-open{overflow:hidden}
     <div class="work-grid rv" id="workGrid">
       <article class="work" data-cat="development design ecommerce architecture" data-id="mend">
         <span class="flag">Latest</span>
-        <div class="work-img"><img src="assets/webp/mend.webp" alt="MEND Medical Wear" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/mend.webp" data-lg="assets/webp/mend@lg.webp" data-ar="1024/1024" alt="MEND Medical Wear" loading="lazy"></div>
         <div class="work-body">
           <h3>MEND Medical Wear</h3>
           <p>Recovery apparel and connected-care brand built end to end &mdash; storefront, seven product pages, a React fall-risk assessment tool, and the full technical SEO program behind them.</p>
@@ -959,7 +960,7 @@ body.modal-open{overflow:hidden}
 
       <article class="work" data-cat="architecture development design" data-id="eyeappeal">
         <span class="flag">Case study</span>
-        <div class="work-img"><img src="assets/webp/eyeappeal.webp" alt="Eye Appeal Inc." loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/eyeappeal.webp" data-lg="assets/webp/eyeappeal@lg.webp" data-ar="1300/730" alt="Eye Appeal Inc." loading="lazy"></div>
         <div class="work-body">
           <h3>Eye Appeal Inc.</h3>
           <p>Community-driven collectible grading platform featuring an AI-powered Rate-to-Reveal game, the proprietary EyeQ+ scoring metric, and a global registry for sports card collectors.</p>
@@ -978,7 +979,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="architecture ecommerce development" data-id="odysay">
-        <div class="work-img"><img src="assets/webp/odysay.webp" alt="OdySay" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/odysay.webp" data-lg="assets/webp/odysay@lg.webp" data-ar="1300/869" alt="OdySay" loading="lazy"></div>
         <div class="work-body">
           <h3>OdySay</h3>
           <p>Architecture and Magento development &mdash; catalog structure, checkout flow, and the integration work behind a storefront built to scale past its first good quarter.</p>
@@ -997,7 +998,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="architecture design development" data-id="terrafirma">
-        <div class="work-img"><img src="assets/webp/terrafirma.webp" alt="Terra Firma Music" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/terrafirma.webp" data-lg="assets/webp/terrafirma@lg.webp" data-ar="1300/869" alt="Terra Firma Music" loading="lazy"></div>
         <div class="work-body">
           <h3>Terra Firma Music</h3>
           <p>Architecture, design, and development end to end &mdash; identity through build, with a front end tuned for media-heavy pages that still load fast.</p>
@@ -1016,7 +1017,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="architecture design development ecommerce" data-id="liquorstore">
-        <div class="work-img"><img src="assets/webp/liquorstore.webp" alt="The Liquor Store SF" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/liquorstore.webp" data-lg="assets/webp/liquorstore@lg.webp" data-ar="1300/869" alt="The Liquor Store SF" loading="lazy"></div>
         <div class="work-body">
           <h3>The Liquor Store SF</h3>
           <p>Architecture, design, and development for a San Francisco hospitality brand &mdash; booking, menus, and a storefront that reads as well on a phone at the bar as on a desktop.</p>
@@ -1035,7 +1036,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="architecture cms security" data-id="fpc">
-        <div class="work-img"><img src="assets/webp/fpc.webp" alt="First Presbyterian Church" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/fpc.webp" data-lg="assets/webp/fpc@lg.webp" data-ar="1300/869" alt="First Presbyterian Church" loading="lazy"></div>
         <div class="work-body">
           <h3>First Presbyterian Church</h3>
           <p>Architectural and WordPress site improvements &mdash; structure, accessibility, and hardening for a volunteer-maintained site that had to stay maintainable.</p>
@@ -1054,7 +1055,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="ecommerce architecture design development" data-id="prima">
-        <div class="work-img"><img src="assets/webp/prima.webp" alt="Prima Studio" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/prima.webp" data-lg="assets/webp/prima@lg.webp" data-ar="1300/869" alt="Prima Studio" loading="lazy"></div>
         <div class="work-body">
           <h3>Prima Studio</h3>
           <p>Ecommerce architecture, design, and development: Magento front and back end, a custom HTML5 video player, and analytics instrumentation.</p>
@@ -1073,7 +1074,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="ecommerce architecture design" data-id="llsupply">
-        <div class="work-img"><img src="assets/webp/llsupply.webp" alt="L'L Supply" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/llsupply.webp" data-lg="assets/webp/llsupply@lg.webp" data-ar="1300/869" alt="L'L Supply" loading="lazy"></div>
         <div class="work-body">
           <h3>L&amp;L Supply</h3>
           <p>Ecommerce architecture, migration, and design &mdash; legacy to Magento 2.3, with 10,000+ products and 500,000 customer records imported without losing a row.</p>
@@ -1092,7 +1093,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="ecommerce architecture" data-id="tivo">
-        <div class="work-img"><img src="assets/webp/tivo.webp" alt="TiVo" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/tivo.webp" data-lg="assets/webp/tivo@lg.webp" data-ar="1300/869" alt="TiVo" loading="lazy"></div>
         <div class="work-body">
           <h3>TiVo</h3>
           <p>Led the transition to Magento Enterprise 2.4 &mdash; stakeholder coordination, timeline management, and a migration that landed clean.</p>
@@ -1111,7 +1112,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="design development ecommerce" data-id="coupdetat">
-        <div class="work-img"><img src="assets/webp/coupdetat.webp" alt="Coup D'Etat" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/coupdetat.webp" data-lg="assets/webp/coupdetat@lg.webp" data-ar="1300/869" alt="Coup D'Etat" loading="lazy"></div>
         <div class="work-body">
           <h3>Coup D&rsquo;Etat</h3>
           <p>Designed and developed, with conversions to show for it &mdash; plus a Storybook component library that cut deployment cycles.</p>
@@ -1130,7 +1131,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="architecture cms ecommerce development" data-id="lexmark">
-        <div class="work-img"><img src="assets/webp/lexmark.webp" alt="Lexmark" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/lexmark.webp" data-lg="assets/webp/lexmark@lg.webp" data-ar="1300/869" alt="Lexmark" loading="lazy"></div>
         <div class="work-body">
           <h3>Lexmark</h3>
           <p>Integrated AEM with Magento for a seamless shopping experience, using Magento for inventory and cart.</p>
@@ -1149,7 +1150,7 @@ body.modal-open{overflow:hidden}
       </article>
 
       <article class="work" data-cat="cms development security" data-id="tenx">
-        <div class="work-img"><img src="assets/webp/tenx.webp" alt="Ten-X" loading="lazy"></div>
+        <div class="work-img"><img src="assets/webp/tenx.webp" data-lg="assets/webp/tenx@lg.webp" data-ar="1300/869" alt="Ten-X" loading="lazy"></div>
         <div class="work-body">
           <h3>Ten-X</h3>
           <p>Site enhancements that improved functionality and user experience &mdash; plus SEO and auto-build deployment work.</p>
@@ -1734,7 +1735,10 @@ body.modal-open{overflow:hidden}
     var w = list[current];
 
     var img = w.querySelector('.work-img img');
-    mImg.src = img.getAttribute('src');
+    // full-size version for the modal; the card keeps the light one
+    // reserve the box before the large image lands, or the panel jumps
+    mImg.style.aspectRatio = img.getAttribute('data-ar') || 'auto';
+    mImg.src = img.getAttribute('data-lg') || img.getAttribute('src');
     mImg.alt = img.getAttribute('alt') || '';
     var title = w.querySelector('h3').textContent;
     mTitle.textContent = title;

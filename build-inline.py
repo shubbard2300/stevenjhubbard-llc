@@ -23,6 +23,10 @@ def inline(m):
 
 html = re.sub(r'src="([^"]+)"', inline, html)
 
+# the modal's full-size images are referenced by data-lg, not src
+html = re.sub(r'data-lg="([^"]+)"',
+              lambda m: 'data-lg=' + inline(m)[4:], html)
+
 # The artifact host wraps the file in its own <!doctype>/<html>/<head>/<body>,
 # so strip ours. The deployed site keeps them — that is where lang= matters.
 html = re.sub(r'^\s*<!doctype html>\s*\n', '', html, flags=re.I)
