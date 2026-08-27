@@ -1722,23 +1722,55 @@ body.modal-open{overflow:hidden}
 
 
   /* ── Analytics events ─────────────────────────────────── */
+  /* Each event goes two places: a named push onto the GTM dataLayer, and a
+     direct gtag() call to GA4. No GTM container is installed yet, so the
+     pushes sit inert until one is — then its Custom Event triggers pick them
+     up by name. If you ever add a GA4 tag inside GTM for G-TGMML7BB0S, delete
+     the gtag() line below first, or every event is counted twice. */
+  window.dataLayer = window.dataLayer || [];
+
   function track(name, params) {
-    if (typeof gtag === 'function') gtag('event', name, params || {});
+    var p = params || {}, payload = { event: name }, k;
+    for (k in p) if (Object.prototype.hasOwnProperty.call(p, k)) payload[k] = p[k];
+    window.dataLayer.push(payload);
+    if (typeof gtag === 'function') gtag('event', name, p);
+  }
+
+  /* Where on the page the link sits. Hero and the contact card are named
+     explicitly; everything else falls back to the enclosing section id. */
+  function linkLocation(el) {
+    if (el.closest('.hero'))         return 'hero';
+    if (el.closest('.contact-card')) return 'contact_card';
+    var s = el.closest('section[id]');
+    return s ? s.id : 'page';
+  }
+
+  function linkText(el) {
+    return (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100);
   }
 
   document.querySelectorAll('a[href*="export?format=pdf"]').forEach(function (a) {
     a.addEventListener('click', function () {
       track('resume_download', {
         method: 'google_doc_pdf',
-        link_location: a.closest('.hero') ? 'hero' : 'about'
+        file_name: 'Steven Hubbard Master Resume.pdf',
+        link_location: linkLocation(a),
+        link_text: linkText(a),
+        link_url: a.href
       });
     });
   });
 
   document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(function (a) {
+    var href    = a.getAttribute('href');
+    var isPhone = href.indexOf('tel:') === 0;
     a.addEventListener('click', function () {
       track('contact_click', {
-        method: a.getAttribute('href').indexOf('tel:') === 0 ? 'phone' : 'email'
+        method: isPhone ? 'phone' : 'email',
+        /* drop the ?subject= querystring so the value stays groupable */
+        contact_target: href.split('?')[0].replace(/^(mailto|tel):/, ''),
+        link_location: linkLocation(a),
+        link_text: linkText(a)
       });
     });
   });
