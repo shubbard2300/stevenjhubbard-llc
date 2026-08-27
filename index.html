@@ -12,6 +12,18 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WKKMKC2V');</script>
+<!-- End Google Tag Manager -->
+
+<!-- GA4 below is deliberately NOT managed by the container above. Adding a GA4
+     tag inside GTM for G-TGMML7BB0S would double-count every event, because the
+     gtag('event', …) call in track() is still live. See index.md. -->
+
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGMML7BB0S"></script>
 <script>
@@ -684,6 +696,17 @@ body.modal-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.modal-panel,.modal-backdrop{animation:none}}
 @media print{.modal{display:none!important}}
 </style>
+
+<!-- <body> is explicit only so the noscript below lands in the body. Without it
+     the parser keeps <noscript> in the implied head — it is valid there — and the
+     GTM iframe ends up in the wrong place. Verified: body.firstElementChild is
+     the noscript, not div.sheet. -->
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKMKC2V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <div class="sheet" aria-hidden="true">
   <div class="v" style="left:max(var(--gut),calc(50vw - var(--wrap)/2 + var(--gut)))"></div>
@@ -1887,4 +1910,5 @@ body.modal-open{overflow:hidden}
   });
 })();
 </script>
+</body>
 </html>
