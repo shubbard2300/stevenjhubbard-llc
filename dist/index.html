@@ -18,6 +18,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-WKKMKC2V');</script>
 <!-- End Google Tag Manager -->
 
+<!-- Accent hue follows the visitor's local clock. Parser-blocking and above
+     <body> on purpose: the attribute has to land before first paint, or the
+     page flashes the day blue and then corrects itself. No JS, no attribute,
+     and the :root default (day blue) stands. -->
+<script>
+(function () {
+  var el = document.documentElement;
+
+  function daypart(h) {
+    if (h < 5)  return 'night';
+    if (h < 9)  return 'dawn';
+    if (h < 17) return 'day';
+    if (h < 22) return 'dusk';
+    return 'night';
+  }
+
+  function set() {
+    el.setAttribute('data-daypart', daypart(new Date().getHours()));
+  }
+
+  set();
+
+  /* Re-read the clock for a tab left open across a boundary, and for a
+     laptop shut at dusk and reopened the next morning — waking from sleep
+     fires visibilitychange but no timer that was due while suspended. */
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) set();
+  });
+  setInterval(set, 600000);
+})();
+</script>
+
 <!-- GA4 below is deliberately NOT managed by the container above. Adding a GA4
      tag inside GTM for G-TGMML7BB0S would double-count every event, because the
      gtag('event', …) call in track() is still live. See index.md. -->
@@ -87,10 +119,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --ink:#E9EEF8;
   --ink-2:#A6B2C6;
   --ink-3:#7E8A9C;
-  --accent:#3D7BFF;
-  --accent-2:#8FB2FF;
-  --accent-soft:rgba(61,123,255,.14);
-  --accent-glow:rgba(61,123,255,.30);
+  /* Every blue on the page derives from these numbers, so a daypart below
+     restates the hue and its three lightnesses. Defaults are the canonical
+     drafting blue (#3D7BFF) — also what shows with JavaScript off.
+     The lightnesses are per-hue on purpose: equal HSL lightness is not equal
+     luminance, so a flat 62% across hues swung white-on-accent from 3.85 to
+     2.43 and made the solid buttons unreadable at one daypart. Each value
+     below is solved to match the day blue's luminance, which pins contrast
+     identical all day and leaves hue as the only thing that moves. */
+  --accent-h:221;
+  --accent-s:100%;
+  --accent-l:62%;
+  --accent-l-lift:68%;
+  --accent-l-2:78%;
+  --accent:hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+  --accent-2:hsl(var(--accent-h) var(--accent-s) var(--accent-l-2));
+  --accent-lift:hsl(var(--accent-h) var(--accent-s) var(--accent-l-lift));
+  --accent-soft:hsl(var(--accent-h) var(--accent-s) var(--accent-l) / .14);
+  --accent-glow:hsl(var(--accent-h) var(--accent-s) var(--accent-l) / .30);
+  --accent-veil:hsl(var(--accent-h) var(--accent-s) var(--accent-l) / .10);
   --signal:#FFB454;
 
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -100,6 +147,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --wrap:1320px;
   --gut:clamp(20px,4.2vw,64px);
   --rule:1px solid var(--line);
+}
+
+/* ── Daypart accent ───────────────────────────────────────────
+   The hue tracks the visitor's local clock, set by the script in <head>.
+   It stays inside the blue family the whole way round and never approaches
+   --signal amber. Every daypart carries the same luminance as the day blue
+   (accent 5.1:1 on --ground, white-on-accent 3.9:1), so only the temperature
+   changes — dawn azure, day drafting blue, dusk violet, night indigo.
+   Screen only: the print sheet overrides --accent outright and must keep
+   winning, and html[data-daypart] outranks its :root. */
+@media screen{
+  html[data-daypart="dawn"] {--accent-h:207;--accent-l:46.5%;--accent-l-lift:54.5%;--accent-l-2:70%}
+  html[data-daypart="day"]  {--accent-h:221;--accent-l:62%;--accent-l-lift:68%;--accent-l-2:78%}
+  html[data-daypart="dusk"] {--accent-h:250;--accent-l:70.5%;--accent-l-lift:75%;--accent-l-2:83%}
+  html[data-daypart="night"]{--accent-h:232;--accent-l:68.5%;--accent-l-lift:73.5%;--accent-l-2:81.5%}
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -228,7 +290,7 @@ section{position:relative}
 }
 .btn:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
 .btn--solid{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn--solid:hover{background:#5A8FFF;border-color:#5A8FFF;color:#fff}
+.btn--solid:hover{background:var(--accent-lift);border-color:var(--accent-lift);color:#fff}
 .btn i{font-style:normal;transition:transform .22s}
 .btn:hover i{transform:translateX(3px)}
 
@@ -360,7 +422,7 @@ section{position:relative}
 .portrait:hover img{filter:grayscale(.85) contrast(1.02) brightness(1.04);transform:scale(1.025)}
 .portrait::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(190deg,rgba(61,123,255,.10),transparent 42%,rgba(7,9,14,.55));
+  background:linear-gradient(190deg,var(--accent-veil),transparent 42%,rgba(7,9,14,.55));
 }
 .portrait-tag{
   position:absolute;left:0;bottom:0;z-index:2;
