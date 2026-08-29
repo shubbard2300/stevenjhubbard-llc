@@ -417,7 +417,11 @@ section{position:relative}
      presentational height hint; without an author height declaration that hint
      wins, the box becomes definite, and aspect-ratio is ignored entirely. */
   width:100%;height:auto;display:block;
-  aspect-ratio:1/1;object-fit:cover;object-position:50% 10%;
+  /* 4/5, not 1/1. The source is 640x725 with the chin close to its lower
+     edge; a square crop pushed the jaw down under the .portrait-tag chip.
+     At 4/5 the full source height fits the box and only the blurred
+     background is trimmed left and right. */
+  aspect-ratio:4/5;object-fit:cover;object-position:50% 50%;
   filter:grayscale(1) contrast(1.06) brightness(.94);
   transition:filter .6s ease,transform .8s cubic-bezier(.2,.8,.2,1);
 }
