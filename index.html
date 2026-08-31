@@ -569,8 +569,23 @@ section{position:relative}
   width:7px;height:7px;background:var(--accent);border-radius:1px;
   box-shadow:0 0 12px var(--accent-glow);font-style:normal;
 }
-.nav-links{display:none;gap:26px;margin-left:auto;align-items:center}
+.nav-links{display:none;gap:24px;margin-left:auto;align-items:center}
 @media (min-width:1000px){.nav-links{display:flex}}
+/* Ten section links, a 166px brand and the CTA need 978px; at the 1000px
+   breakpoint only 916px is available once --gut takes its 42px a side.
+   Squeeze the two gaps and the tracking instead of raising the breakpoint —
+   raising it would silently strip the nav from 1000-1180px, which is the
+   orphaned-section problem all over again. Leave --gut alone: the brand has
+   to stay flush with the content column beneath it. */
+.nav-cta{white-space:nowrap}
+@media (max-width:1179px){
+  .nav-in{gap:12px}
+  .nav-links{gap:11px}
+  .nav-links a{letter-spacing:.08em;font-size:10.5px}
+  /* The arrow is the first thing to go: it is decoration, and dropping it
+     is what keeps "Hire me" on one line at the 1000px breakpoint. */
+  .nav-cta i{display:none}
+}
 .nav-links a{
   font-family:var(--mono);font-size:11px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-3);transition:color .2s;
@@ -1105,6 +1120,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#work">Work</a>
       <a href="#timeline">Timeline</a>
       <a href="#stack">Stack</a>
+      <a href="#why">Why</a>
+      <a href="#numbers">Numbers</a>
+      <a href="#feedback">Feedback</a>
     </nav>
     <a class="btn btn--solid nav-cta" href="#contact">Hire me <i>&rarr;</i></a>
   </div>
