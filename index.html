@@ -601,6 +601,51 @@ section{position:relative}
 .nav-links a.on{color:var(--ink)}
 .nav-cta{margin-left:auto}
 @media (min-width:1000px){.nav-cta{margin-left:8px}}
+/* ── Mobile menu ──────────────────────────────────────────────
+   Below 1000px the SAME .nav-links element becomes the panel — not a
+   second copy of the ten links. One list means the scroll spy, which
+   queries .nav-links a, keeps working untouched and the two navs can
+   never drift out of sync. */
+.nav-burger{
+  display:none;margin-left:10px;width:38px;height:38px;padding:0;
+  flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:transparent;border:1px solid var(--line-2);cursor:pointer;
+}
+.nav-burger span{
+  display:block;width:16px;height:1.5px;background:var(--ink-2);
+  transition:transform .25s ease,opacity .2s ease;
+}
+.nav-burger:hover span{background:var(--ink)}
+.nav.open .nav-burger span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.nav.open .nav-burger span:nth-child(2){opacity:0}
+.nav.open .nav-burger span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+@media (max-width:999px){
+  .nav-burger{display:flex}
+  .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;margin-left:0;
+    position:fixed;top:66px;left:0;right:0;
+    max-height:calc(100dvh - 66px);overflow-y:auto;
+    background:rgba(7,9,14,.97);backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line);
+    visibility:hidden;opacity:0;transform:translateY(-8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;
+  }
+  .nav.open .nav-links{visibility:visible;opacity:1;transform:none}
+  .nav-links a{
+    font-size:12px;letter-spacing:.14em;color:var(--ink-2);
+    padding:15px var(--gut);border-top:1px solid var(--line);
+  }
+  /* the sliding underline is a pointer affordance; a full-width row is not */
+  .nav-links a::after{display:none}
+  .nav-links a.on{color:var(--accent)}
+}
+body.nav-open{overflow:hidden}
+/* Travel is what the preference is about, so drop the slide and keep the fade. */
+@media (prefers-reduced-motion:reduce){
+  .nav-links{transform:none!important;transition:opacity .2s ease,visibility .2s}
+}
+
 .progress{
   position:absolute;bottom:-1px;left:0;height:1px;width:0;
   background:linear-gradient(90deg,var(--accent),var(--accent-2));
@@ -1112,7 +1157,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="brand" href="#top"><i></i>Steven&nbsp;J.&nbsp;Hubbard</a>
-    <nav class="nav-links" aria-label="Sections">
+    <nav class="nav-links" id="navPanel" aria-label="Sections">
       <a href="#about">About</a>
       <a href="#practice">Practice</a>
       <a href="#systems">Systems</a>
@@ -1125,6 +1170,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#feedback">Feedback</a>
     </nav>
     <a class="btn btn--solid nav-cta" href="#contact">Hire me <i>&rarr;</i></a>
+    <button class="nav-burger" id="navBurger" type="button"
+            aria-expanded="false" aria-controls="navPanel" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
   <div class="progress" id="progress"></div>
 </header>
@@ -2033,6 +2082,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     requestAnimationFrame(function () { onScroll(); ticking = false; });
   }, { passive: true });
   onScroll();
+
+  /* ── Mobile menu ──────────────────────────────────────── */
+  var burger = document.getElementById('navBurger');
+  if (burger) {
+    var setMenu = function (open) {
+      nav.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    burger.addEventListener('click', function () {
+      setMenu(!nav.classList.contains('open'));
+    });
+
+    /* Every link is a same-page anchor, so the panel has to get out of the
+       way itself — there is no navigation to close it. */
+    Array.prototype.forEach.call(document.querySelectorAll('.nav-links a'), function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        setMenu(false);
+        burger.focus();
+      }
+    });
+
+    /* Rotating a phone or dragging a window past 1000px would otherwise leave
+       the panel open and body scroll locked, with the burger gone. */
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1000 && nav.classList.contains('open')) setMenu(false);
+    });
+  }
 
   /* ── Hero role line ───────────────────────────────────── */
   var roles = [
