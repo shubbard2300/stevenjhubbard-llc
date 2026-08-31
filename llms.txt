@@ -12,7 +12,7 @@
 - Phone: +1 (415) 359-7606
 - LinkedIn: https://www.linkedin.com/in/steven-j-hubbard
 - Site: https://www.stevenjhubbard.com/
-- Resume (PDF): https://docs.google.com/document/d/17_sxsXf3ZbdT7IAo0H9Ib8kadmn61ezU7PSleaOlY9I/export?format=pdf
+- Resume (PDF): https://docs.google.com/document/d/1GoVb_p0Oz-jZDXPD9AuYM0jeLzdqh17qBOyUz0G9lbo/export?format=pdf
 
 ## What he is hired for
 
@@ -43,3 +43,18 @@ Procter & Gamble, Frito-Lay, UCSF Children's Hospital, United Healthcare.
 - 25+ years shipping for the web, since 1999.
 - Two years putting AI and LLM tooling into production workflows; formally AI-certified.
 - Education: BA Computer Science, Academy of Art University. Also University of Oregon, Portland State University.
+
+## Key sections
+
+- [Who he is](https://www.stevenjhubbard.com/#about): 25 years of shipping, from table layouts to component libraries.
+- [Architecture practice](https://www.stevenjhubbard.com/#practice): the eight domains he is accountable for.
+- [Six ways he gets hired](https://www.stevenjhubbard.com/#services): ecommerce architecture, ecommerce development, CMS development, web design and UI, logo and brand design, security and optimization.
+- [Selected work](https://www.stevenjhubbard.com/#work): twelve projects with outcomes — MEND Medical Wear, Eye Appeal, OdySay, TiVo, Lexmark, Ten-X, and more.
+- [Twenty-five years, in order](https://www.stevenjhubbard.com/#timeline): the full role-by-role history.
+- [Stack](https://www.stevenjhubbard.com/#stack): every platform, language, and tool he has shipped with.
+- [Contact](https://www.stevenjhubbard.com/#contact): how to start a conversation.
+
+## Availability
+
+Open to contract and full-time Solutions Architect roles, remote across the
+United States. Reachable at contact@stevenjhubbard.com or +1 (415) 359-7606.
