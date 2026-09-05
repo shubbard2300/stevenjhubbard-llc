@@ -9,3 +9,6 @@ ACTION-PLAN.md
 ._*
 .Spotlight-V100
 .Trashes
+
+# Local dev-server config for Claude Code — not part of the site
+.claude/

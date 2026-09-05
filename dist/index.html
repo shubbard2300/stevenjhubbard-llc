@@ -1016,6 +1016,32 @@ body.nav-open{overflow:hidden}
 .contact-card a,.contact-card p{font-size:15.5px;color:var(--ink);font-weight:500;transition:color .2s}
 .contact-card a:hover{color:var(--accent-2)}
 
+/* ── Contact form ────────────────────────────────────────── */
+.cform{margin-top:clamp(28px,3.4vw,38px);display:grid;gap:14px}
+.cform-row{display:grid;gap:14px}
+@media (min-width:620px){.cform-row{grid-template-columns:1fr 1fr}}
+.cform label{display:block;margin-bottom:7px;color:var(--ink-3)}
+.cform input,.cform textarea{width:100%;padding:12px 14px;background:var(--panel);
+  color:var(--ink);border:var(--rule);font:inherit;font-size:15.5px;
+  transition:border-color .2s ease,background .2s ease}
+.cform textarea{min-height:132px;resize:vertical}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);background:var(--panel-2)}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--ink-3);opacity:.75}
+.cform button{justify-self:start;margin-top:4px}
+.cform button[disabled]{opacity:.55;pointer-events:none}
+/* Honeypot: off-screen rather than display:none — some bots skip hidden inputs. */
+.cform-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cform-note{min-height:1.4em;margin:0}
+.cform-note[data-state="ok"]{color:var(--accent-2)}
+.cform-note[data-state="err"]{color:#FF9A9A}
+
+/* Toast for the clipboard fallback on mailto/tel links. */
+.copy-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,12px);
+  background:var(--panel-2);border:var(--rule);color:var(--ink);padding:11px 17px;
+  font-size:14px;opacity:0;pointer-events:none;z-index:120;
+  transition:opacity .25s ease,transform .25s ease}
+.copy-toast.in{opacity:1;transform:translate(-50%,0)}
+
 footer{border-top:var(--rule);padding:26px 0}
 .foot-in{display:flex;flex-wrap:wrap;gap:14px 26px;justify-content:space-between;align-items:center}
 /* Colour-only transition, so the reduced-motion block leaves it alone by design. */
@@ -1997,6 +2023,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="btn" href="tel:+14153597606">Call 415.359.7606</a>
         <a class="btn" href="https://docs.google.com/document/d/1GoVb_p0Oz-jZDXPD9AuYM0jeLzdqh17qBOyUz0G9lbo/export?format=pdf" target="_blank" rel="noopener">Download resume <span class="mono" style="letter-spacing:.1em;opacity:.6">PDF</span> <i>&darr;</i></a>
       </div>
+
+      <form class="cform rv rv-d1" id="cform" novalidate>
+        <div class="cform-row">
+          <div>
+            <label class="mono" for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          </div>
+          <div>
+            <label class="mono" for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="200" required>
+          </div>
+        </div>
+        <div>
+          <label class="mono" for="cf-message">Project or role</label>
+          <textarea id="cf-message" name="message" maxlength="4000" required placeholder="What you&rsquo;re building, the stack, and rough timing."></textarea>
+        </div>
+        <div class="cform-hp" aria-hidden="true">
+          <label for="cf-company">Company</label>
+          <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn btn--solid" id="cformBtn" type="submit">Send message <i>&rarr;</i></button>
+        <p class="cform-note mono" id="cformNote" role="status" aria-live="polite"></p>
+      </form>
     </div>
 
     <div class="contact-card rv rv-d1">
@@ -2276,19 +2325,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
+  /* A mailto: link is silent on any machine with no mail handler registered —
+     the click does nothing and the visitor has no way to know they should copy
+     the address instead. So every mailto click also puts the address on the
+     clipboard and says so. The default action is deliberately NOT prevented:
+     where a handler does exist, the mail client still opens as usual. */
+  var toast;
+  function flash(msg) {
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('in');
+    clearTimeout(toast.hideTimer);
+    toast.hideTimer = setTimeout(function () { toast.classList.remove('in'); }, 2800);
+  }
+
   document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(function (a) {
     var href    = a.getAttribute('href');
     var isPhone = href.indexOf('tel:') === 0;
+    /* drop the ?subject= querystring so the value stays groupable */
+    var target  = href.split('?')[0].replace(/^(mailto|tel):/, '');
     a.addEventListener('click', function () {
       track('contact_click', {
         method: isPhone ? 'phone' : 'email',
-        /* drop the ?subject= querystring so the value stays groupable */
-        contact_target: href.split('?')[0].replace(/^(mailto|tel):/, ''),
+        contact_target: target,
         link_location: linkLocation(a),
         link_text: linkText(a)
       });
+      if (isPhone || !navigator.clipboard) return;
+      navigator.clipboard.writeText(target).then(function () {
+        flash(target + '  \u2014  copied to clipboard');
+      }, function () { /* clipboard refused; a mail client may still open */ });
     });
   });
+
+  /* ── Contact form ─────────────────────────────────────── */
+  var cform = document.getElementById('cform');
+  if (cform) {
+    var cnote = document.getElementById('cformNote');
+    var cbtn  = document.getElementById('cformBtn');
+
+    function say(state, msg) {
+      cnote.setAttribute('data-state', state);
+      cnote.textContent = msg;
+    }
+
+    cform.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var els  = cform.elements;
+      var body = {
+        name:    els.name.value.trim(),
+        email:   els.email.value.trim(),
+        message: els.message.value.trim(),
+        company: els.company.value          /* honeypot */
+      };
+      if (!body.name || !body.email || !body.message) {
+        say('err', 'Name, email, and a message, please.');
+        return;
+      }
+      cbtn.disabled = true;
+      say('', 'Sending\u2026');
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      }).then(function (r) {
+        /* A non-JSON body — a 404 HTML page, a proxy error — must not leak a
+           parser message into the UI, so a failed parse becomes a null body. */
+        return r.json().then(
+          function (d) { return { ok: r.ok, data: d }; },
+          function ()  { return { ok: false, data: null }; }
+        );
+      }).then(function (res) {
+        if (!res.ok) {
+          /* Only the API's own wording is fit to show a visitor. */
+          say('err', ((res.data && res.data.error) || 'Could not send right now') +
+                     ' \u2014 or email contact@stevenjhubbard.com directly.');
+          return;
+        }
+        cform.reset();
+        say('ok', 'Thanks \u2014 that reached me. I usually reply within a day.');
+        track('contact_form_submit', { link_location: 'contact' });
+      })['catch'](function () {
+        say('err', 'Could not send right now \u2014 please email contact@stevenjhubbard.com directly.');
+      }).then(function () { cbtn.disabled = false; });
+    });
+  }
 
   /* ── Project modal ────────────────────────────────────── */
   var modal   = document.getElementById('projectModal');
