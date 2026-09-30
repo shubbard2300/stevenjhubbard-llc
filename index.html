@@ -486,7 +486,7 @@ body{
   background:var(--ground);
   color:var(--ink);
   font-family:var(--body);
-  font-size:16px;
+  font-size:1rem;
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
@@ -507,7 +507,7 @@ img{max-width:100%;display:block}
 /* ── Type primitives ─────────────────────────────────────── */
 .mono{
   font-family:var(--mono);
-  font-size:11px;
+  font-size:0.6875rem;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--ink-3);
@@ -516,14 +516,14 @@ img{max-width:100%;display:block}
 .mono .dot{color:var(--accent);}
 h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance;font-weight:800}
 h2{
-  font-size:clamp(30px,4.6vw,58px);
+  font-size:clamp(1.875rem,4.6vw,3.625rem);
   line-height:.98;
   letter-spacing:-.028em;
   font-variation-settings:"wdth" 108;
 }
-h3{font-size:clamp(19px,2vw,25px);line-height:1.14;letter-spacing:-.018em;font-weight:700}
+h3{font-size:clamp(1.1875rem,2vw,1.5625rem);line-height:1.14;letter-spacing:-.018em;font-weight:700}
 p{margin:0}
-.lede{font-size:clamp(16.5px,1.35vw,19px);color:var(--ink-2);max-width:60ch}
+.lede{font-size:clamp(1.03125rem,1.35vw,1.1875rem);color:var(--ink-2);max-width:60ch}
 .body-col{max-width:66ch;color:var(--ink-2)}
 .body-col p+p{margin-top:1.05em}
 strong{color:var(--ink);font-weight:600}
@@ -561,7 +561,7 @@ section{position:relative}
   height:66px;display:flex;align-items:center;gap:26px;
 }
 .brand{
-  font-family:var(--display);font-weight:800;font-size:15px;
+  font-family:var(--display);font-weight:800;font-size:0.9375rem;
   letter-spacing:-.01em;font-variation-settings:"wdth" 112;
   display:flex;align-items:center;gap:9px;
 }
@@ -581,13 +581,13 @@ section{position:relative}
 @media (max-width:1179px){
   .nav-in{gap:12px}
   .nav-links{gap:11px}
-  .nav-links a{letter-spacing:.08em;font-size:10.5px}
+  .nav-links a{letter-spacing:.08em;font-size:0.65625rem}
   /* The arrow is the first thing to go: it is decoration, and dropping it
      is what keeps "Hire me" on one line at the 1000px breakpoint. */
   .nav-cta i{display:none}
 }
 .nav-links a{
-  font-family:var(--mono);font-size:11px;letter-spacing:.13em;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-3);transition:color .2s;
   padding:6px 0;position:relative;
 }
@@ -633,7 +633,7 @@ section{position:relative}
   }
   .nav.open .nav-links{visibility:visible;opacity:1;transform:none}
   .nav-links a{
-    font-size:12px;letter-spacing:.14em;color:var(--ink-2);
+    font-size:0.75rem;letter-spacing:.14em;color:var(--ink-2);
     padding:15px var(--gut);border-top:1px solid var(--line);
   }
   /* the sliding underline is a pointer affordance; a full-width row is not */
@@ -655,7 +655,7 @@ body.nav-open{overflow:hidden}
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn{
   display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.71875rem;letter-spacing:.13em;text-transform:uppercase;
   font-weight:500;padding:12px 20px;border:1px solid var(--line-2);
   color:var(--ink);background:transparent;cursor:pointer;
   transition:border-color .22s,background .22s,color .22s,transform .22s;
@@ -700,7 +700,7 @@ body.nav-open{overflow:hidden}
 .namebox{overflow:hidden}
 .name{
   font-family:var(--display);
-  font-size:clamp(50px,11.4vw,148px);
+  font-size:clamp(3.125rem,11.4vw,9.25rem);
   line-height:.855;
   font-weight:900;
   letter-spacing:-.045em;
@@ -720,14 +720,14 @@ body.nav-open{overflow:hidden}
 .roleline{
   margin-top:clamp(20px,2.6vw,28px);
   font-family:var(--mono);
-  font-size:clamp(12px,1.35vw,15px);
+  font-size:clamp(0.75rem,1.35vw,0.9375rem);
   letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);
   min-height:1.6em;
 }
 .roleline .caret{display:inline-block;width:8px;background:var(--accent);color:transparent;animation:blink 1.05s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
-.hero-copy{margin-top:clamp(24px,3vw,34px);max-width:57ch;color:var(--ink-2);font-size:clamp(15.5px,1.25vw,17.5px)}
+.hero-copy{margin-top:clamp(24px,3vw,34px);max-width:57ch;color:var(--ink-2);font-size:clamp(0.96875rem,1.25vw,1.09375rem)}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(28px,3.4vw,38px)}
 
 /* spec block */
@@ -739,8 +739,8 @@ body.nav-open{overflow:hidden}
 .spec dl{margin:0;padding:4px 16px 14px}
 .spec div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed rgba(28,37,54,.85)}
 .spec div:last-child{border-bottom:0}
-.spec dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.spec dd{margin:0;font-size:13px;color:var(--ink);text-align:right;font-weight:500}
+.spec dt{font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.spec dd{margin:0;font-size:0.8125rem;color:var(--ink);text-align:right;font-weight:500}
 .spec dd em{font-style:normal;color:var(--signal);font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* ── Marquee ─────────────────────────────────────────────── */
@@ -752,7 +752,7 @@ body.nav-open{overflow:hidden}
 .track li{
   list-style:none;
   font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 88;
-  font-size:clamp(17px,2vw,26px);letter-spacing:-.01em;
+  font-size:clamp(1.0625rem,2vw,1.625rem);letter-spacing:-.01em;
   color:var(--ink-3);padding:0 30px;white-space:nowrap;
   display:flex;align-items:center;gap:30px;
   transition:color .25s;
@@ -771,7 +771,7 @@ body.nav-open{overflow:hidden}
 .cell{padding:clamp(24px,2.6vw,34px);position:relative;transition:background .3s}
 .cell:hover{background:var(--panel)}
 .cell h3{margin-bottom:11px}
-.cell p{color:var(--ink-2);font-size:14.5px;line-height:1.6}
+.cell p{color:var(--ink-2);font-size:0.90625rem;line-height:1.6}
 .cell .mono{margin-bottom:16px;display:block}
 .cell::after{
   content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
@@ -808,15 +808,15 @@ body.nav-open{overflow:hidden}
 }
 .fact-list{margin-top:22px;border-top:var(--rule)}
 .fact-list div{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:var(--rule)}
-.fact-list dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.fact-list dd{margin:0;font-size:13.5px;text-align:right;color:var(--ink)}
+.fact-list dt{font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.fact-list dd{margin:0;font-size:0.84375rem;text-align:right;color:var(--ink)}
 
 /* ── Skill bars ──────────────────────────────────────────── */
 .bars{margin-top:clamp(32px,4vw,46px);display:grid;gap:16px}
 @media (min-width:760px){.bars{grid-template-columns:repeat(2,1fr);gap:16px 40px}}
 .bar-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
-.bar-h span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
-.bar-h span:last-child{font-family:var(--mono);font-size:11px;color:var(--signal);font-variant-numeric:tabular-nums}
+.bar-h span:first-child{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
+.bar-h span:last-child{font-family:var(--mono);font-size:0.6875rem;color:var(--signal);font-variant-numeric:tabular-nums}
 .bar{height:2px;background:var(--line);position:relative;overflow:hidden}
 .bar i{
   position:absolute;inset:0 auto 0 0;width:0;
@@ -837,11 +837,11 @@ body.nav-open{overflow:hidden}
 .topo .edge-live{fill:none;stroke:var(--accent);stroke-width:1;opacity:.5}
 .topo .node rect{fill:var(--panel-2);stroke:var(--line-2);stroke-width:1;transition:stroke .3s,fill .3s}
 .topo .node:hover rect{stroke:var(--accent);fill:#16203380}
-.topo .node text{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;fill:var(--ink-2);text-transform:uppercase}
+.topo .node text{font-family:var(--mono);font-size:0.59375rem;letter-spacing:.09em;fill:var(--ink-2);text-transform:uppercase}
 .topo .node.core rect{fill:#101A2E;stroke:var(--accent)}
 .topo .node.core text{fill:var(--accent-2)}
 .topo .pkt{fill:var(--accent-2)}
-.topo .cap{font-family:var(--mono);font-size:9px;letter-spacing:.1em;fill:var(--ink-3);text-transform:uppercase}
+.topo .cap{font-family:var(--mono);font-size:0.5625rem;letter-spacing:.1em;fill:var(--ink-3);text-transform:uppercase}
 .topo-legend{display:flex;flex-wrap:wrap;gap:20px;padding:14px 18px;border-top:var(--rule)}
 .topo-legend span{display:flex;align-items:center;gap:8px}
 .topo-legend b{width:14px;height:1px;background:var(--accent);display:block}
@@ -850,7 +850,7 @@ body.nav-open{overflow:hidden}
 /* ── Work ────────────────────────────────────────────────── */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .filters button{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;
   padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--ink-3);
   cursor:pointer;transition:.22s;
 }
@@ -877,36 +877,57 @@ body.nav-open{overflow:hidden}
   background:linear-gradient(180deg,transparent 40%,rgba(7,9,14,.9));
 }
 .work-body{padding:20px 22px 24px;border-top:var(--rule)}
-.work-body h3{font-size:19px;margin-bottom:7px;transition:color .25s}
+.work-body h3{font-size:1.1875rem;margin-bottom:7px;transition:color .25s}
 .work:hover .work-body h3{color:var(--accent-2)}
-.work-body p{color:var(--ink-2);font-size:13.5px;line-height:1.55}
+.work-body p{color:var(--ink-2);font-size:0.84375rem;line-height:1.55}
 .work-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .work-tags span{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.59375rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-3);border:1px solid var(--line);padding:3px 7px;
 }
 .flag{
   position:absolute;top:0;left:0;z-index:2;background:var(--accent);color:#fff;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.59375rem;letter-spacing:.12em;text-transform:uppercase;
   padding:5px 10px;
 }
 
 /* ── Timeline ────────────────────────────────────────────── */
 .tl{border-top:var(--rule)}
 .tl-item{border-bottom:var(--rule)}
-.tl-btn{
-  width:100%;background:transparent;border:0;cursor:pointer;color:inherit;
-  display:grid;gap:6px;text-align:left;padding:26px 0;
-  transition:background .3s;font:inherit;
-  grid-template-columns:minmax(0,1fr);
+/* The row is a div, not the button: the company name is a link now, and a
+   link can't sit inside a <button>. The small toggle button stretches an
+   ::after across the whole row, so clicking anywhere still expands it, and
+   the name link rides above that layer. Same trick as .work-open. */
+.tl-head{
+  position:relative;display:grid;gap:6px 16px;padding:26px 0;
+  grid-template-columns:minmax(0,1fr) auto;transition:background .3s;
 }
+/* Narrow: date and name stack on the left, the toggle sits beside them. */
+.tl-when,.tl-who{grid-column:1}
+.tl-btn{grid-column:2;grid-row:1 / span 2;align-self:start}
 @media (min-width:860px){
-  .tl-btn{grid-template-columns:168px minmax(0,1fr) 42px;align-items:baseline;gap:32px;padding:28px 20px 28px 0}
+  .tl-head{grid-template-columns:168px minmax(0,1fr) 42px;align-items:baseline;gap:32px;padding:28px 20px 28px 0}
+  .tl-when,.tl-who,.tl-btn{grid-column:auto;grid-row:auto}
 }
-.tl-btn:hover{background:var(--panel)}
-.tl-when{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
-.tl-who h3{font-size:clamp(20px,2.2vw,27px);font-variation-settings:"wdth" 104}
-.tl-who .role{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-2);margin-top:6px;display:block}
+.tl-head:hover{background:var(--panel)}
+.tl-btn{justify-self:end;display:block;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;font:inherit}
+.tl-btn::after{content:"";position:absolute;inset:0;z-index:1}
+.tl-btn:focus-visible{outline:none}
+.tl-head:has(.tl-btn:focus-visible){outline:2px solid var(--accent-2);outline-offset:-2px}
+.tl-link{position:relative;z-index:2;color:inherit;transition:color .2s}
+.tl-link i{font-style:normal;font-size:.55em;margin-left:.35em;vertical-align:.45em;color:var(--ink-3);transition:color .2s}
+.tl-link:hover,.tl-link:hover i{color:var(--accent-2)}
+.tl-visit{margin-top:22px}
+.early-visit{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);
+  transition:color .2s;
+}
+.early-visit:hover{color:#fff}
+.early-visit i{font-style:normal}
+.tl-when{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tl-who h3{font-size:clamp(1.25rem,2.2vw,1.6875rem);font-variation-settings:"wdth" 104}
+.tl-who .role{font-family:var(--mono);font-size:0.71875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-2);margin-top:6px;display:block}
 .tl-plus{
   justify-self:end;width:26px;height:26px;border:1px solid var(--line-2);
   position:relative;flex:none;transition:.28s;
@@ -925,10 +946,10 @@ body.nav-open{overflow:hidden}
 .tl-inner{padding:0 0 30px}
 @media (min-width:860px){.tl-inner{padding-left:200px;padding-right:62px}}
 .tl-inner ul{margin:0;padding:0;list-style:none;display:grid;gap:11px;max-width:78ch}
-.tl-inner li{position:relative;padding-left:20px;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+.tl-inner li{position:relative;padding-left:20px;color:var(--ink-2);font-size:0.90625rem;line-height:1.6}
 .tl-inner li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--accent)}
 .tl-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
-.tl-stack span{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);padding:3px 8px}
+.tl-stack span{font-family:var(--mono);font-size:0.59375rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);padding:3px 8px}
 
 .earlier{margin-top:clamp(40px,5vw,58px)}
 .earlier-grid{display:grid;gap:1px;background:var(--line);border:var(--rule)}
@@ -936,9 +957,9 @@ body.nav-open{overflow:hidden}
 @media (min-width:1080px){.earlier-grid{grid-template-columns:repeat(3,1fr)}}
 .early{background:var(--ground);padding:20px 22px;transition:background .3s}
 .early:hover{background:var(--panel)}
-.early h4{font-size:16px;font-family:var(--display);font-weight:700;margin-bottom:3px}
-.early .m{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:10px}
-.early p{font-size:13px;color:var(--ink-2);line-height:1.55}
+.early h4{font-size:1rem;font-family:var(--display);font-weight:700;margin-bottom:3px}
+.early .m{font-family:var(--mono);font-size:0.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:10px}
+.early p{font-size:0.8125rem;color:var(--ink-2);line-height:1.55}
 
 /* ── Stack chips ─────────────────────────────────────────── */
 .stack-grid{display:grid;gap:1px;background:var(--line);border:var(--rule)}
@@ -949,7 +970,7 @@ body.nav-open{overflow:hidden}
 .stack-cell .mono{display:block;margin-bottom:16px;color:var(--accent-2)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips span{
-  font-size:12px;color:var(--ink-2);border:1px solid var(--line);
+  font-size:0.75rem;color:var(--ink-2);border:1px solid var(--line);
   padding:5px 10px;transition:.22s;background:rgba(14,20,32,.5);
 }
 .chips span:hover{border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
@@ -962,7 +983,7 @@ body.nav-open{overflow:hidden}
 .metric:hover{background:var(--panel)}
 .metric b{
   display:block;font-family:var(--display);font-weight:800;
-  font-size:clamp(38px,5.2vw,64px);line-height:1;letter-spacing:-.035em;
+  font-size:clamp(2.375rem,5.2vw,4rem);line-height:1;letter-spacing:-.035em;
   font-variation-settings:"wdth" 112;color:var(--ink);
   font-variant-numeric:tabular-nums;
 }
@@ -972,7 +993,7 @@ body.nav-open{overflow:hidden}
   display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;
   padding-top:20px;border-top:var(--rule);
 }
-.hardnums li{list-style:none;font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.hardnums li{list-style:none;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
 .hardnums li b{color:var(--signal);font-weight:600;font-variant-numeric:tabular-nums}
 
 /* ── Testimonials ────────────────────────────────────────── */
@@ -981,12 +1002,12 @@ body.nav-open{overflow:hidden}
 .quote{background:var(--ground);padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;gap:22px;transition:background .3s}
 .quote:hover{background:var(--panel)}
 .quote--wide{grid-column:1/-1}
-.quote blockquote{margin:0;font-size:clamp(15px,1.3vw,17px);line-height:1.62;color:var(--ink-2)}
+.quote blockquote{margin:0;font-size:clamp(0.9375rem,1.3vw,1.0625rem);line-height:1.62;color:var(--ink-2)}
 .quote blockquote::before{content:"";display:block;width:26px;height:2px;background:var(--accent);margin-bottom:18px}
 .q-by{display:flex;align-items:center;gap:13px;margin-top:auto}
 .q-by img{width:42px;height:42px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.1);border:1px solid var(--line-2)}
-.q-by .n{font-size:14px;font-weight:600;color:var(--ink)}
-.q-by .t{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+.q-by .n{font-size:0.875rem;font-weight:600;color:var(--ink)}
+.q-by .t{font-family:var(--mono);font-size:0.625rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
 
 /* ── Contact ─────────────────────────────────────────────── */
 .contact{position:relative;overflow:hidden}
@@ -1001,7 +1022,7 @@ body.nav-open{overflow:hidden}
 @media (min-width:960px){.contact-in{grid-template-columns:minmax(0,1fr) minmax(0,420px);align-items:start;gap:72px}}
 .big-cta{
   font-family:var(--display);font-weight:900;
-  font-size:clamp(38px,7.4vw,96px);line-height:.92;letter-spacing:-.04em;
+  font-size:clamp(2.375rem,7.4vw,6rem);line-height:.92;letter-spacing:-.04em;
   font-variation-settings:"wdth" 116;
 }
 .big-cta a{
@@ -1015,7 +1036,7 @@ body.nav-open{overflow:hidden}
 .contact-card div{padding:18px 22px;border-bottom:var(--rule)}
 .contact-card div:last-child{border-bottom:0}
 .contact-card .mono{display:block;margin-bottom:7px}
-.contact-card a,.contact-card p{font-size:15.5px;color:var(--ink);font-weight:500;transition:color .2s}
+.contact-card a,.contact-card p{font-size:0.96875rem;color:var(--ink);font-weight:500;transition:color .2s}
 .contact-card a:hover{color:var(--accent-2)}
 
 /* ── Contact form ────────────────────────────────────────── */
@@ -1024,7 +1045,7 @@ body.nav-open{overflow:hidden}
 @media (min-width:620px){.cform-row{grid-template-columns:1fr 1fr}}
 .cform label{display:block;margin-bottom:7px;color:var(--ink-3)}
 .cform input,.cform textarea{width:100%;padding:12px 14px;background:var(--panel);
-  color:var(--ink);border:var(--rule);font:inherit;font-size:15.5px;
+  color:var(--ink);border:var(--rule);font:inherit;font-size:0.96875rem;
   transition:border-color .2s ease,background .2s ease}
 .cform textarea{min-height:132px;resize:vertical}
 .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);background:var(--panel-2)}
@@ -1040,7 +1061,7 @@ body.nav-open{overflow:hidden}
 /* Toast for the clipboard fallback on mailto/tel links. */
 .copy-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,12px);
   background:var(--panel-2);border:var(--rule);color:var(--ink);padding:11px 17px;
-  font-size:14px;opacity:0;pointer-events:none;z-index:120;
+  font-size:0.875rem;opacity:0;pointer-events:none;z-index:120;
   transition:opacity .25s ease,transform .25s ease}
 .copy-toast.in{opacity:1;transform:translate(-50%,0)}
 
@@ -1080,11 +1101,78 @@ footer{border-top:var(--rule);padding:26px 0}
   .btn:hover i,.work:hover .work-open i{transform:none!important}
 }
 
+/* ── Press ──────────────────────────────────────────────────
+   Feedback lands on pointer-down, not release. `scale` is its own property,
+   so it stacks with the hover lift instead of fighting it; and it is not
+   vestibular motion, so reduced motion keeps it. */
+.btn{transition:border-color .22s,background .22s,color .22s,transform .22s,scale .1s ease-out}
+.filters button,.modal-foot button,.modal-close,.early-visit{transition:color .22s,border-color .22s,background .22s,scale .1s ease-out}
+.btn:active,.filters button:active,.modal-foot button:active:not(:disabled),.modal-close:active,.early-visit:active,.nav-burger:active{scale:.96}
+
+/* ── Filter pill ────────────────────────────────────────────
+   One solid highlight that springs between buttons, drawn by script. With
+   no script the pressed button fills itself, as before. */
+.filters{position:relative}
+.filters button{position:relative;z-index:1}
+.filters .pill{position:absolute;left:0;top:0;background:var(--accent);pointer-events:none;will-change:transform}
+.filters.pilled button[aria-pressed="true"]{background:transparent;border-color:transparent}
+
+/* ── Glass ──────────────────────────────────────────────────
+   A bright hairline reads as light catching the edge of the material. */
+.nav.stuck{-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom-color:rgba(255,255,255,.07)}
+@media (max-width:999px){
+  .nav-links{-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom-color:rgba(255,255,255,.07)}
+}
+
+/* ── Modal image → viewer ───────────────────────────────── */
+.media-open{display:block;width:100%;max-width:1300px;padding:0;border:0;background:none;cursor:zoom-in}
+
+/* ── Capture viewer ─────────────────────────────────────────
+   The project screenshot lifted out of the modal at its native size, to
+   drag around. Driven by springs in the script. */
+.viewer{position:fixed;inset:0;z-index:300;opacity:0;touch-action:none;overscroll-behavior:contain;cursor:grab}
+.viewer.on{opacity:1}
+.viewer.grab{cursor:grabbing}
+.viewer[hidden]{display:none}
+.viewer-scrim{position:absolute;inset:0;background:rgba(4,6,10,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.viewer img{
+  position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;
+  box-shadow:0 40px 90px -30px #000,0 0 0 1px var(--line-2);user-select:none;-webkit-user-select:none;-webkit-user-drag:none;
+}
+.viewer-bar{
+  position:absolute;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));z-index:1;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none;
+}
+.viewer-hint,.viewer-close{
+  font-family:var(--mono);font-size:0.65625rem;letter-spacing:.13em;text-transform:uppercase;
+  border:var(--rule);border-top-color:rgba(255,255,255,.1);padding:8px 14px;
+  background:rgba(7,9,14,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+}
+.viewer-hint{color:var(--ink-3)}
+.viewer-close{color:var(--ink);cursor:pointer;pointer-events:auto;transition:background .22s,border-color .22s,scale .1s ease-out}
+.viewer-close:hover{border-color:var(--accent);background:var(--accent-soft)}
+.viewer-close:active{scale:.96}
+@media (max-width:560px){.viewer-hint{display:none}}
+@media (prefers-reduced-motion:reduce){.viewer{transition:opacity .2s}}
+
+/* ── Accessibility: transparency and contrast ───────────────
+   Reduced transparency turns the glass solid; more contrast also firms up
+   the rules and the dimmer text. */
+@media (prefers-reduced-transparency:reduce){
+  .nav.stuck,.nav-links,.viewer-hint,.viewer-close{background:var(--ground-2);-webkit-backdrop-filter:none;backdrop-filter:none}
+  /* .modal prefix: the backdrop's own rule sits later in the sheet. */
+  .modal .modal-backdrop,.viewer-scrim{background:var(--ground);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media (prefers-contrast:more){
+  :root{--line:#3A4A66;--line-2:#5A6D8F;--ink-2:#C9D2E0;--ink-3:#A6B2C6}
+  .nav.stuck,.nav-links,.viewer-hint,.viewer-close{background:var(--ground);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:var(--line-2)}
+}
+
 /* ── Print sheet ─────────────────────────────────────────── */
 @media print{
   :root{--ground:#fff;--ground-2:#fff;--panel:#fff;--panel-2:#fff;--line:#d5dae2;--line-2:#b8c0cc;--ink:#0b0d12;--ink-2:#3a4150;--ink-3:#6b7280;--accent:#14459c;--accent-2:#14459c}
   body{background:#fff;color:#0b0d12}
-  .nav,.sheet,.hero-scan,.hero-grid,.contact-grid,.marq,.filters,.topo-shell,.hero-actions,.tl-plus{display:none!important}
+  .nav,.sheet,.hero-scan,.hero-grid,.contact-grid,.marq,.filters,.topo-shell,.hero-actions,.tl-plus,.tl-visit,.early-visit,.viewer{display:none!important}
   .tl-panel{grid-template-rows:1fr!important}
   .band{padding-block:22px;break-inside:avoid}
   .work-img{display:none}
@@ -1096,7 +1184,7 @@ footer{border-top:var(--rule);padding:26px 0}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .work-open{
   margin-top:16px;display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;
   color:var(--accent-2);background:none;border:0;padding:0;cursor:pointer;font-weight:500;
   transition:color .22s;
 }
@@ -1131,22 +1219,22 @@ footer{border-top:var(--rule);padding:26px 0}
 }
 .modal-media figcaption{display:none}
 .modal-body{padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;gap:18px;width:100%;max-width:1364px;margin-inline:auto}
-.modal-body h3{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.022em;font-variation-settings:"wdth" 106}
+.modal-body h3{font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.022em;font-variation-settings:"wdth" 106}
 .modal-kicker{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
-.modal-detail{color:var(--ink-2);font-size:14.5px;line-height:1.62;display:grid;gap:12px}
+.modal-detail{color:var(--ink-2);font-size:0.90625rem;line-height:1.62;display:grid;gap:12px}
 .modal-detail p{margin:0}
 .modal-detail ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
 .modal-detail li{position:relative;padding-left:19px}
 .modal-detail li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--accent)}
 .modal-meta{border-top:var(--rule);padding-top:16px;display:grid;gap:10px}
 .modal-meta div{display:flex;justify-content:space-between;gap:16px}
-.modal-meta dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.modal-meta dd{margin:0;font-size:13px;color:var(--ink);text-align:right}
+.modal-meta dt{font-family:var(--mono);font-size:0.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.modal-meta dd{margin:0;font-size:0.8125rem;color:var(--ink);text-align:right}
 .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 .modal-close{
   position:absolute;top:0;right:0;z-index:4;width:44px;height:44px;
   background:var(--ground);border:0;border-left:var(--rule);border-bottom:var(--rule);
-  color:var(--ink-2);cursor:pointer;font-size:20px;line-height:1;transition:.22s;
+  color:var(--ink-2);cursor:pointer;font-size:1.25rem;line-height:1;transition:.22s;
 }
 .modal-close:hover{background:var(--accent);color:#fff}
 .modal-foot{
@@ -1154,7 +1242,7 @@ footer{border-top:var(--rule);padding:26px 0}
   gap:12px;padding:10px clamp(14px,2.2vw,32px);background:var(--ground-2);flex:none;
 }
 .modal-foot button{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.65625rem;letter-spacing:.12em;text-transform:uppercase;
   background:none;border:1px solid var(--line);color:var(--ink-2);padding:8px 14px;cursor:pointer;transition:.22s;
 }
 .modal-foot button:hover:not(:disabled){border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
@@ -1710,11 +1798,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tl rv">
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="true" aria-controls="tp1">
+        <div class="tl-head">
           <span class="tl-when">Feb 2000 &mdash; Present</span>
-          <span class="tl-who"><h3>Steven Hubbard LLC</h3><span class="role">Independent Consultant &amp; Solutions Architect</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://work.stevenjhubbard.com/" target="_blank" rel="noopener">Steven Hubbard LLC<i aria-hidden="true">&#8599;</i><span class="sr-only"> (the full work archive, opens in a new tab)</span></a></h3><span class="role">Independent Consultant &amp; Solutions Architect</span></span>
+          <button class="tl-btn" type="button" aria-expanded="true" aria-controls="tp1"><span class="sr-only">Details for Steven Hubbard LLC</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel open" id="tp1"><div><div class="tl-inner">
           <ul>
             <li>Own solution architecture end-to-end on client engagements: current-state assessment, target-state design, data modeling, integration strategy, feasibility review, and hands-on delivery.</li>
@@ -1723,15 +1811,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Produce solution architecture documentation, integration specifications, and reusable design patterns so client teams can extend and maintain the work independently.</li>
           </ul>
           <div class="tl-stack"><span>Workfront</span><span>Salesforce</span><span>Snowflake</span><span>REST</span><span>Event-driven</span></div>
+          <a class="btn tl-visit" href="https://work.stevenjhubbard.com/" target="_blank" rel="noopener">See the full work archive <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp2">
+        <div class="tl-head">
           <span class="tl-when">Mar 2025 &mdash; Feb 2026</span>
-          <span class="tl-who"><h3>Eye Appeal Inc.</h3><span class="role">Senior Architect &amp; Developer</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://eyeappealinc.com/" target="_blank" rel="noopener">Eye Appeal Inc.<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Senior Architect &amp; Developer</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp2"><span class="sr-only">Details for Eye Appeal Inc.</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp2"><div><div class="tl-inner">
           <ul>
             <li>Architected API integrations and automated workflow pipelines connecting internal systems with third-party platforms &mdash; each designed as a reusable integration pattern rather than a point solution.</li>
@@ -1739,15 +1828,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Introduced automated QA and data-validation workflows into the delivery pipeline, <strong>reducing manual development effort by 30%</strong>.</li>
           </ul>
           <div class="tl-stack"><span>SvelteKit</span><span>Vercel</span><span>TypeScript</span><span>CI/CD</span><span>QA automation</span></div>
+          <a class="btn tl-visit" href="https://eyeappealinc.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp3">
+        <div class="tl-head">
           <span class="tl-when">Oct 2024 &mdash; Dec 2025</span>
-          <span class="tl-who"><h3>Horizon Media</h3><span class="role">Web Director &amp; Solutions Architect</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://www.horizonmedia.com/" target="_blank" rel="noopener">Horizon Media<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Web Director &amp; Solutions Architect</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp3"><span class="sr-only">Details for Horizon Media</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp3"><div><div class="tl-inner">
           <ul>
             <li>Led enterprise web architecture, AI-driven analytics, and performance optimization for major clients including <strong>United Healthcare</strong> &mdash; improving performance, accessibility, and engagement across their digital platforms.</li>
@@ -1758,15 +1848,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Presented architecture options, risk assessments, and roadmap tradeoffs to executive stakeholders to drive platform investment and prioritization decisions.</li>
           </ul>
           <div class="tl-stack"><span>AEM</span><span>NetSuite</span><span>Snowflake</span><span>WordPress</span><span>AI analytics</span><span>Governance</span></div>
+          <a class="btn tl-visit" href="https://www.horizonmedia.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp4">
+        <div class="tl-head">
           <span class="tl-when">Jan 2019 &mdash; Mar 2025</span>
-          <span class="tl-who"><h3>Coup D&rsquo;Etat</h3><span class="role">Senior Architect &amp; Developer &middot; Contract</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://coupdetatsf.com/" target="_blank" rel="noopener">Coup D&rsquo;Etat<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Senior Architect &amp; Developer &middot; Contract</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp4"><span class="sr-only">Details for Coup D&rsquo;Etat</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp4"><div><div class="tl-inner">
           <ul>
             <li>Established architectural standards, security practices, and performance benchmarks adopted across all client engagements.</li>
@@ -1777,15 +1868,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Used Google Analytics to guide optimization: <strong>35% better engagement</strong>, <strong>20% lower bounce</strong>, and a substantial traffic increase.</li>
           </ul>
           <div class="tl-stack"><span>Storybook</span><span>React</span><span>WooCommerce</span><span>Agile</span><span>Analytics</span></div>
+          <a class="btn tl-visit" href="https://coupdetatsf.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp5">
+        <div class="tl-head">
           <span class="tl-when">Oct 2022 &mdash; Mar 2023</span>
-          <span class="tl-who"><h3>Lexmark</h3><span class="role">Front-End AEM Developer &amp; Magento Architect</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://www.lexmark.com/" target="_blank" rel="noopener">Lexmark<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Front-End AEM Developer &amp; Magento Architect</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp5"><span class="sr-only">Details for Lexmark</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp5"><div><div class="tl-inner">
           <ul>
             <li>Architected the AEM-to-Magento integration via custom plugins, using Magento for inventory and cart management &mdash; <strong>30% more user engagement</strong> and a <strong>15% higher conversion rate</strong>.</li>
@@ -1795,15 +1887,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Aligned front-end architecture to enterprise standards and automated QA regression coverage, <strong>cutting manual testing overhead 20%</strong>.</li>
           </ul>
           <div class="tl-stack"><span>AEM</span><span>Magento 2.4</span><span>React</span><span>QA automation</span></div>
+          <a class="btn tl-visit" href="https://www.lexmark.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp6">
+        <div class="tl-head">
           <span class="tl-when">Dec 2020 &mdash; May 2022</span>
-          <span class="tl-who"><h3>TiVo</h3><span class="role">Senior Ecommerce Architect</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://www.tivo.com/" target="_blank" rel="noopener">TiVo<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Senior Ecommerce Architect</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp6"><span class="sr-only">Details for TiVo</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp6"><div><div class="tl-inner">
           <ul>
             <li>Spearheaded the transition to Magento Enterprise 2.4 &mdash; stakeholder coordination, timeline management, and a seamless migration.</li>
@@ -1814,15 +1907,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Integrated Marketo and Litmus with AEM-driven properties, improving engagement through send-time optimization and A/B testing; consolidated legacy payment systems onto Braintree.</li>
           </ul>
           <div class="tl-stack"><span>Magento EE 2.4</span><span>WebMethods</span><span>Java</span><span>SOAP/XML</span><span>Snowflake</span><span>Marketo</span><span>Braintree</span></div>
+          <a class="btn tl-visit" href="https://www.tivo.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp7">
+        <div class="tl-head">
           <span class="tl-when">Feb 2020 &mdash; Mar 2021</span>
           <span class="tl-who"><h3>L&amp;L Supply</h3><span class="role">Ecommerce Architect &amp; Senior Developer</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp7"><span class="sr-only">Details for L&amp;L Supply</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp7"><div><div class="tl-inner">
           <ul>
             <li>Led the CMS migration to WordPress and Magento 2.3, delivering a <strong>20% improvement in site performance</strong> and a lift in ecommerce conversion.</li>
@@ -1836,11 +1930,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp8">
+        <div class="tl-head">
           <span class="tl-when">Jan 2019 &mdash; Dec 2019</span>
-          <span class="tl-who"><h3>iRhythm Technologies</h3><span class="role">Senior HubSpot Developer</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://www.irhythmtech.com/" target="_blank" rel="noopener">iRhythm Technologies<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h3><span class="role">Senior HubSpot Developer</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp8"><span class="sr-only">Details for iRhythm Technologies</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp8"><div><div class="tl-inner">
           <ul>
             <li>Built customized HubSpot landing pages and modules driving a <strong>30% boost in lead conversions</strong> and markedly improved engagement.</li>
@@ -1848,15 +1942,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Designed direct and marketing email templates; lifted opens and click-through rates <strong>38%</strong>.</li>
           </ul>
           <div class="tl-stack"><span>HubSpot</span><span>API integration</span><span>Email</span></div>
+          <a class="btn tl-visit" href="https://www.irhythmtech.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a>
         </div></div></div>
       </div>
 
       <div class="tl-item">
-        <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp9">
+        <div class="tl-head">
           <span class="tl-when">Sep 2015 &mdash; Jan 2018</span>
-          <span class="tl-who"><h3>Ten-X</h3><span class="role">Senior WordPress Developer</span></span>
-          <span class="tl-plus" aria-hidden="true"></span>
-        </button>
+          <span class="tl-who"><h3><a class="tl-link" href="https://web.archive.org/web/2016/https://www.ten-x.com/" target="_blank" rel="noopener">Ten-X<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2016 snapshot, opens in a new tab)</span></a></h3><span class="role">Senior WordPress Developer</span></span>
+          <button class="tl-btn" type="button" aria-expanded="false" aria-controls="tp9"><span class="sr-only">Details for Ten-X</span><span class="tl-plus" aria-hidden="true"></span></button>
+        </div>
         <div class="tl-panel" id="tp9"><div><div class="tl-inner">
           <ul>
             <li>Led team meetings on WordPress platform enhancements that improved functionality and user experience &mdash; <strong>25% more site traffic</strong>.</li>
@@ -1873,16 +1968,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="earlier rv">
       <span class="mono" style="display:block;margin-bottom:18px">Earlier &mdash; 2000 to 2015</span>
       <div class="earlier-grid">
-        <article class="early"><h4>Chrome Industries</h4><span class="m">Magento Developer &middot; 2014&ndash;2015</span><p>Custom PDP, category and landing page layouts lifting add-to-cart 20% and retention 40%. Custom JS/CSS cutting page load 30%; responsive build reducing bounce 25%. Led PCI SAQ and scan to full compliance.</p></article>
-        <article class="early"><h4>Thismoment</h4><span class="m">Software &amp; Production Engineer &middot; 2013&ndash;2014</span><p>Custom UGC platforms and video tooling for Fortune 500 brands. Video player rebuild cutting buffering 50%.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://www.chromeindustries.com/" target="_blank" rel="noopener">Chrome Industries<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h4><span class="m">Magento Developer &middot; 2014&ndash;2015</span><p>Custom PDP, category and landing page layouts lifting add-to-cart 20% and retention 40%. Custom JS/CSS cutting page load 30%; responsive build reducing bounce 25%. Led PCI SAQ and scan to full compliance.</p><a class="early-visit" href="https://www.chromeindustries.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a></article>
+        <article class="early"><h4><a class="tl-link" href="https://www.thismoment.com/" target="_blank" rel="noopener">Thismoment<i aria-hidden="true">&#8599;</i><span class="sr-only"> (live site, opens in a new tab)</span></a></h4><span class="m">Software &amp; Production Engineer &middot; 2013&ndash;2014</span><p>Custom UGC platforms and video tooling for Fortune 500 brands. Video player rebuild cutting buffering 50%.</p><a class="early-visit" href="https://www.thismoment.com/" target="_blank" rel="noopener">Visit live site <i>&#8599;</i></a></article>
         <article class="early"><h4>Prima Studio</h4><span class="m">Ecommerce Architect &amp; Lead Dev &middot; 2011&ndash;2013</span><p>Magento front and back end, HTML5 video player, analytics and conversion instrumentation &mdash; 70% performance gain over stock Magento.</p></article>
-        <article class="early"><h4>Urban Air Market</h4><span class="m">Architect, Dev &amp; Creative Director &middot; 2011&ndash;2013</span><p>Full site, print and email identity; CMS front and back end; SEO program. 80% performance gain over standard builds.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://web.archive.org/web/2013/http://urbanairmarket.com/" target="_blank" rel="noopener">Urban Air Market<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2013 snapshot, opens in a new tab)</span></a></h4><span class="m">Architect, Dev &amp; Creative Director &middot; 2011&ndash;2013</span><p>Full site, print and email identity; CMS front and back end; SEO program. 80% performance gain over standard builds.</p></article>
         <article class="early"><h4>Euro RSCG</h4><span class="m">Lead Developer &middot; 2011</span><p>Ported a Flash-based game to HTML5 and jQuery Mobile, halving load times. Companion iOS and Android apps.</p></article>
-        <article class="early"><h4>Moss Outdoor</h4><span class="m">Lead Developer &middot; 2010&ndash;2011</span><p>UI design through CMS build and commerce integration. SEO program lifting visibility 220%.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://web.archive.org/web/2011/http://www.mossoutdoor.com/" target="_blank" rel="noopener">Moss Outdoor<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2011 snapshot, opens in a new tab)</span></a></h4><span class="m">Lead Developer &middot; 2010&ndash;2011</span><p>UI design through CMS build and commerce integration. SEO program lifting visibility 220%.</p></article>
         <article class="early"><h4>Digital Brewing Company</h4><span class="m">Front-End Developer &middot; 2008&ndash;2009</span><p>Client campaign builds, third-party data integration, and front-end performance optimization.</p></article>
-        <article class="early"><h4>Nationalflashback</h4><span class="m">Consultant &amp; Creative Director &middot; 2000&ndash;2008</span><p>Independent practice serving enterprise, SMB and agency clients across architecture, build and creative direction.</p></article>
-        <article class="early"><h4>Nimblefish Technologies</h4><span class="m">Lead Web Developer &middot; 2002&ndash;2008</span><p>Web and email builds against a proprietary CMS in a Linux/Apache/Tomcat environment.</p></article>
-        <article class="early"><h4>Puzzle Theory</h4><span class="m">Art Director &amp; Lead Dev &middot; 2002&ndash;2005</span><p>Site strategy, cross-platform build, and collateral production.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://web.archive.org/web/20190825022539/http://www.nationalflashback.com/" target="_blank" rel="noopener">Nationalflashback<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2019 snapshot, opens in a new tab)</span></a></h4><span class="m">Consultant &amp; Creative Director &middot; 2000&ndash;2008</span><p>Independent practice serving enterprise, SMB and agency clients across architecture, build and creative direction.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://web.archive.org/web/2007/http://www.nimblefish.com/" target="_blank" rel="noopener">Nimblefish Technologies<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2007 snapshot, opens in a new tab)</span></a></h4><span class="m">Lead Web Developer &middot; 2002&ndash;2008</span><p>Web and email builds against a proprietary CMS in a Linux/Apache/Tomcat environment.</p></article>
+        <article class="early"><h4><a class="tl-link" href="https://web.archive.org/web/2011/http://puzzletheory.com/" target="_blank" rel="noopener">Puzzle Theory<i aria-hidden="true">&#8599;</i><span class="sr-only"> (archived 2011 snapshot, opens in a new tab)</span></a></h4><span class="m">Art Director &amp; Lead Dev &middot; 2002&ndash;2005</span><p>Site strategy, cross-platform build, and collateral production.</p></article>
       </div>
     </div>
   </div>
@@ -2070,7 +2165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="modal-close" type="button" data-close aria-label="Close">&times;</button>
     <div class="modal-scroll">
       <figure class="modal-media" style="margin:0">
-        <img id="modalImg" alt="">
+        <button class="media-open" id="mediaOpen" type="button" aria-haspopup="dialog" aria-label="Enlarge the screenshot"><img id="modalImg" alt=""></button>
         <figcaption class="mono" id="modalCap"></figcaption>
       </figure>
       <div class="modal-body">
@@ -2105,6 +2200,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* iOS Safari only applies :active when the page has a touch listener. */
+  window.addEventListener('touchstart', function () {}, { passive: true });
+
+  /* Spring, in Apple's two designer terms rather than mass/stiffness:
+     z = damping ratio (1 = no overshoot), r = response in seconds. go()
+     re-targets from the live value and keeps the current velocity, so any
+     spring can be interrupted or reversed mid-flight without a jump.
+     Reduced motion lands every spring instantly. */
+  function Spring(x, on, eps) { this.x = this.to = x; this.v = 0; this.on = on; this.eps = eps || .3; this.raf = 0; }
+  Spring.prototype.stop = function () { cancelAnimationFrame(this.raf); this.raf = 0; };
+  Spring.prototype.set = function (x) { this.stop(); this.x = this.to = x; this.v = 0; this.on(); };
+  Spring.prototype.go = function (to, o) {
+    o = o || {};
+    var s = this, last = null;
+    s.to = to; s.z = o.z || 1; s.r = o.r || .4;
+    if (o.v !== undefined) s.v = o.v;
+    if (reduce || o.jump) { s.set(to); return; }
+    if (s.raf) return;
+    s.raf = requestAnimationFrame(function step(t) {
+      var dt = last === null ? 1 / 60 : Math.min((t - last) / 1000, 1 / 30);
+      var k = Math.pow(2 * Math.PI / s.r, 2), c = 4 * Math.PI * s.z / s.r, h = dt / 4;
+      last = t;
+      for (var n = 0; n < 4; n++) { s.v += (-k * (s.x - s.to) - c * s.v) * h; s.x += s.v * h; }
+      if (Math.abs(s.x - s.to) < s.eps && Math.abs(s.v) < s.eps * 10) { s.x = s.to; s.v = 0; s.raf = 0; }
+      else s.raf = requestAnimationFrame(step);
+      s.on();
+    });
+  };
 
   /* ── Nav: stuck state, scroll progress, section spy ───── */
   var nav = document.getElementById('nav');
@@ -2275,10 +2399,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ── Work filter ──────────────────────────────────────── */
   var fbtns = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
   var works = Array.prototype.slice.call(document.querySelectorAll('.work'));
+
+  /* One solid highlight that travels to the chosen button. The row wraps on
+     narrow screens, so it springs in both axes. */
+  var frow = document.querySelector('.filters');
+  var pill = document.createElement('span');
+  pill.className = 'pill';
+  frow.insertBefore(pill, frow.firstChild);
+  frow.classList.add('pilled');
+  function drawPill() {
+    pill.style.transform = 'translate(' + PX.x + 'px,' + PY.x + 'px)';
+    pill.style.width = PW.x + 'px';
+  }
+  var PX = new Spring(0, drawPill), PY = new Spring(0, drawPill), PW = new Spring(0, drawPill);
+  function aimPill(btn, jump) {
+    pill.style.height = btn.offsetHeight + 'px';
+    PX.go(btn.offsetLeft, { r: .35, jump: jump });
+    PY.go(btn.offsetTop, { r: .35, jump: jump });
+    PW.go(btn.offsetWidth, { r: .35, jump: jump });
+  }
+  function pressedBtn() { return frow.querySelector('[aria-pressed="true"]'); }
+  aimPill(pressedBtn(), true);
+  window.addEventListener('resize', function () { aimPill(pressedBtn(), true); });
+  if (document.fonts) document.fonts.ready.then(function () { aimPill(pressedBtn(), true); });
+
   fbtns.forEach(function (b) {
     b.addEventListener('click', function () {
       var f = b.dataset.f;
       fbtns.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      aimPill(b);
       works.forEach(function (w) {
         var show = f === 'all' || w.dataset.cat.indexOf(f) > -1;
         w.classList.toggle('hide', !show);
@@ -2465,19 +2614,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modal.querySelector('.modal-scroll').scrollTop = 0;
   }
 
+  /* The modal grows out of the card that opened it, and shrinks back into
+     the card it is showing when it closes (paging may have moved on). It is
+     a clip, not a scale, so the content never distorts on the way, and one
+     spring drives it, so a close grabbed mid-open reverses without a jump. */
+  var panel = modal.querySelector('.modal-panel');
+  var backdrop = modal.querySelector('.modal-backdrop');
+  var mState = 'shut', from = null;
+  function drawModal() {
+    var p = MP.x, r = from, vw = window.innerWidth, vh = window.innerHeight, q = 1 - p;
+    panel.style.clipPath = r && p < 1 ?
+      'inset(' + r.top * q + 'px ' + (vw - r.right) * q + 'px ' + (vh - r.bottom) * q + 'px ' + r.left * q + 'px)' : '';
+    backdrop.style.opacity = Math.max(0, Math.min(1, p));
+    if (mState === 'closing' && !MP.raf) finishClose();
+  }
+  var MP = new Spring(0, drawModal, .001);
+  /* The CSS pop/fade stays as the reduced-motion path; the spring replaces it. */
+  if (!reduce) { panel.style.animation = 'none'; backdrop.style.animation = 'none'; }
+
   function openModal(w, trigger) {
-    lastFocus = trigger || document.activeElement;
+    if (mState === 'open') return;
+    if (mState === 'shut') lastFocus = trigger || document.activeElement;
+    from = w.getBoundingClientRect();
     modal.hidden = false;
+    modal.style.pointerEvents = '';
     document.body.classList.add('modal-open');
+    mState = 'open';
     renderProject(visibleWorks().indexOf(w));
     track('project_view', { project: w.querySelector('h3').textContent.trim() });
-    modal.querySelector('.modal-close').focus();
+    drawModal(); /* paint the clipped first frame before the spring's first tick */
+    MP.go(1, { r: .45 });
+    modal.querySelector('.modal-close').focus({ preventScroll: true });
   }
 
-  function closeModal() {
+  /* instant: an in-page link is about to scroll the page, so a shrink back
+     into a card that is about to leave the screen would only look wrong. */
+  function closeModal(instant) {
+    if (mState !== 'open') return;
+    mState = 'closing';
+    modal.style.pointerEvents = 'none';
+    var w = visibleWorks()[current];
+    from = w ? w.getBoundingClientRect() : null;
+    if (instant) MP.set(0); else MP.go(0, { r: .35 });
+  }
+
+  function finishClose() {
+    mState = 'shut';
     modal.hidden = true;
+    modal.style.pointerEvents = '';
+    panel.style.clipPath = '';
     document.body.classList.remove('modal-open');
-    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({ preventScroll: true });
   }
 
   works.forEach(function (w) {
@@ -2491,12 +2678,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   modal.addEventListener('click', function (e) {
     if (e.target.closest('[data-close]')) {
       // let in-page anchors run, but always dismiss the dialog
-      closeModal();
+      closeModal(!!e.target.closest('a[href^="#"]'));
     }
   });
 
   document.addEventListener('keydown', function (e) {
-    if (modal.hidden) return;
+    if (mState !== 'open' || vState !== 'shut') return;
     if (e.key === 'Escape') { closeModal(); return; }
     if (e.key === 'ArrowLeft')  { renderProject(current - 1); return; }
     if (e.key === 'ArrowRight') { renderProject(current + 1); return; }
@@ -2506,6 +2693,165 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var first = f[0], last = f[f.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* ── Capture viewer ───────────────────────────────────────
+     Tap the modal's screenshot and it lifts out at its native size — never
+     upscaled — so a phone can read it. Drag tracks 1:1 from where you
+     grabbed; release hands the finger's velocity to the springs and aims
+     them where the flick was going. Edges rubber-band. Pull down past the
+     top (1:1, it's the dismiss gesture) and it flies back into the modal,
+     still carrying the flick. Grab it mid-flight and it's yours again. */
+  var viewer = document.createElement('div');
+  viewer.className = 'viewer';
+  viewer.hidden = true;
+  viewer.setAttribute('role', 'dialog');
+  viewer.setAttribute('aria-modal', 'true');
+  viewer.setAttribute('aria-label', 'Screenshot viewer');
+  viewer.innerHTML = '<div class="viewer-scrim"></div><img alt="" draggable="false">' +
+    '<div class="viewer-bar"><span class="viewer-hint">Drag to look around &middot; pull down to close</span>' +
+    '<button type="button" class="viewer-close">Close &times;</button></div>';
+  document.body.appendChild(viewer);
+  var vImg = viewer.querySelector('img'), scrim = viewer.querySelector('.viewer-scrim');
+  var vBar = viewer.querySelector('.viewer-bar'), vClose = viewer.querySelector('.viewer-close');
+  var mediaOpen = document.getElementById('mediaOpen');
+
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+  function drawViewer() {
+    vImg.style.transform = 'translate3d(' + VX.x + 'px,' + VY.x + 'px,0) scale(' + VS.x + ')';
+    scrim.style.opacity = clamp(VO.x, 0, 1);
+    /* The controls leave first, so they never float over the page behind. */
+    vBar.style.opacity = clamp((VO.x - .6) / .4, 0, 1);
+    if (vState === 'closing' && !VX.raf && !VY.raf && !VS.raf && !VO.raf) vFinish();
+  }
+  var VX = new Spring(0, drawViewer), VY = new Spring(0, drawViewer);
+  var VS = new Spring(1, drawViewer, .0005), VO = new Spring(0, drawViewer, .002);
+  var vState = 'shut', W = 0, H = 0, B = {};
+
+  /* Apple's scroll-deceleration projection: how far a flick coasts. */
+  function project(v) { return (v / 1000) * .998 / (1 - .998); }
+  /* Progressive resistance past an edge, and its inverse, so a capture
+     grabbed mid-bounce doesn't jump. */
+  function rubber(o, d) { return (o * d * .55) / (d + .55 * Math.abs(o)); }
+  function unrubber(f, d) { return f * d / (.55 * (d - Math.abs(f))); }
+  function band(v, lo, hi, d) { return v < lo ? lo - rubber(lo - v, d) : v > hi ? hi + rubber(v - hi, d) : v; }
+  function unband(v, lo, hi, d) { return v < lo ? lo - unrubber(lo - v, d) : v > hi ? hi + unrubber(v - hi, d) : v; }
+  function bandY(v) { return v > B.y1 ? v : band(v, B.y0, B.y1, B.vh); }
+  function unbandY(v) { return v > B.y1 ? v : unband(v, B.y0, B.y1, B.vh); }
+
+  function vLayout() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var w = visibleWorks()[current].querySelector('.work-img img');
+    var ar = (w.getAttribute('data-ar') || '1300/869').split('/');
+    W = +ar[0]; H = +ar[1];
+    vImg.style.width = W + 'px';
+    vImg.style.height = H + 'px';
+    B = {
+      x0: W > vw ? vw - W : (vw - W) / 2, x1: W > vw ? 0 : (vw - W) / 2,
+      y0: H > vh ? vh - H : (vh - H) / 2, y1: H > vh ? 0 : (vh - H) / 2, vw: vw, vh: vh
+    };
+  }
+  function vHome() { var r = mImg.getBoundingClientRect(); return { x: r.left, y: r.top, s: r.width / W }; }
+
+  function vOpen() {
+    vImg.src = mImg.currentSrc || mImg.src;
+    vImg.alt = mImg.alt;
+    viewer.hidden = false;
+    vLayout();
+    var h = vHome();
+    VX.set(h.x); VY.set(h.y); VS.set(h.s); VO.set(0);
+    mImg.style.visibility = 'hidden';
+    vState = 'open';
+    void viewer.offsetWidth; /* commit opacity:0 so reduced motion can fade in */
+    viewer.classList.add('on');
+    VX.go((B.x0 + B.x1) / 2); VY.go(B.y1); VS.go(1); VO.go(1);
+    vClose.focus({ preventScroll: true });
+  }
+  function vClose_(vx, vy) {
+    if (vState !== 'open') return;
+    vState = 'closing';
+    if (reduce) { viewer.classList.remove('on'); setTimeout(vFinish, 200); return; }
+    var h = vHome();
+    VX.go(h.x, { v: vx || 0 }); VY.go(h.y, { v: vy || 0 }); VS.go(h.s); VO.go(0);
+  }
+  function vFinish() {
+    if (vState !== 'closing') return;
+    vState = 'shut';
+    viewer.classList.remove('on');
+    viewer.hidden = true;
+    mImg.style.visibility = '';
+    mediaOpen.focus({ preventScroll: true });
+  }
+  mediaOpen.addEventListener('click', function () { if (vState === 'shut') vOpen(); });
+
+  /* Drag. A short position history gives the release velocity. */
+  var drag = null;
+  viewer.addEventListener('pointerdown', function (e) {
+    if (vState === 'shut' || e.target.closest('button')) return;
+    if (vState === 'closing') { vState = 'open'; VS.go(1); VO.go(1); }
+    VX.stop(); VY.stop();
+    viewer.setPointerCapture(e.pointerId);
+    viewer.classList.add('grab');
+    drag = {
+      id: e.pointerId, px: e.clientX, py: e.clientY, moved: false,
+      x: unband(VX.x, B.x0, B.x1, B.vw), y: unbandY(VY.x),
+      hist: [{ x: e.clientX, y: e.clientY, t: e.timeStamp }]
+    };
+  });
+  viewer.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.px, dy = e.clientY - drag.py;
+    if (!drag.moved && Math.hypot(dx, dy) < 10) return; /* hysteresis */
+    drag.moved = true;
+    VX.set(band(drag.x + dx, B.x0, B.x1, B.vw));
+    VY.set(bandY(drag.y + dy));
+    /* Pulling down past the top dims the scrim, hinting at the dismiss. */
+    VO.set(1 - clamp((VY.x - B.y1) / (B.vh * .6), 0, .7));
+    drag.hist.push({ x: e.clientX, y: e.clientY, t: e.timeStamp });
+    while (drag.hist.length > 2 && e.timeStamp - drag.hist[0].t > 100) drag.hist.shift();
+  });
+  function release(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag, a = d.hist[0], b = d.hist[d.hist.length - 1], dt = (b.t - a.t) / 1000;
+    drag = null;
+    viewer.classList.remove('grab');
+    if (!d.moved) { if (e.type === 'pointerup') vClose_(0, 0); return; } /* a tap closes */
+    var vx = dt > 0 ? (b.x - a.x) / dt : 0, vy = dt > 0 ? (b.y - a.y) / dt : 0;
+    /* Stale history means the finger stopped before lifting: no flick. */
+    if (e.timeStamp - b.t > 80) vx = vy = 0;
+    var pull = VY.x - B.y1;
+    if (pull > 0 && pull + project(vy) > B.vh * .22 && vy >= 0) { vClose_(vx, vy); return; }
+    VO.go(1);
+    VX.go(clamp(VX.x + project(vx), B.x0, B.x1), { v: vx, r: .55 });
+    VY.go(clamp(VY.x + project(vy), B.y0, B.y1), { v: vy, r: .55 });
+  }
+  viewer.addEventListener('pointerup', release);
+  viewer.addEventListener('pointercancel', release);
+
+  /* Trackpads and wheels already carry their own momentum: follow 1:1. */
+  viewer.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    if (vState !== 'open') return;
+    VX.set(clamp(VX.x - e.deltaX, B.x0, B.x1));
+    VY.set(clamp(VY.x - e.deltaY, B.y0, B.y1));
+  }, { passive: false });
+
+  vClose.addEventListener('click', function () { vClose_(0, 0); });
+  document.addEventListener('keydown', function (e) {
+    if (vState !== 'open') return;
+    var step = { ArrowLeft: [160, 0], ArrowRight: [-160, 0], ArrowUp: [0, 160], ArrowDown: [0, -160] }[e.key];
+    if (e.key === 'Escape') vClose_(0, 0);
+    else if (e.key === 'Tab') vClose.focus();
+    else if (step) {
+      VX.go(clamp(VX.to + step[0], B.x0, B.x1));
+      VY.go(clamp(VY.to + step[1], B.y0, B.y1));
+    } else return;
+    e.preventDefault();
+  });
+  window.addEventListener('resize', function () {
+    if (vState !== 'open') return;
+    vLayout();
+    VX.set(clamp(VX.x, B.x0, B.x1)); VY.set(clamp(VY.x, B.y0, B.y1));
   });
 
   /* ── Timeline accordion ───────────────────────────────── */
