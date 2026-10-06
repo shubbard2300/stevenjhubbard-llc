@@ -1,6 +1,6 @@
 # Steven J. Hubbard
 
-> Solutions Architect and Full Stack Developer with 25+ years building enterprise
+> Solutions Architect and Senior Frontend Engineer with 25+ years building enterprise
 > digital platforms. Deep specialization in Adobe Experience Manager and Edge
 > Delivery Services, with commerce and CMS work across Shopify, Adobe Commerce,
 > and WordPress. Based on the US West Coast, available remote nationwide for
@@ -12,7 +12,7 @@
 - Phone: +1 (415) 359-7606
 - LinkedIn: https://www.linkedin.com/in/steven-j-hubbard
 - Site: https://www.stevenjhubbard.com/
-- Resume (PDF): https://docs.google.com/document/d/1P-2Kd9VsyGgvqjyqcf6cidX22fwJDWh1A3ty787cbag/export?format=pdf
+- Resume (PDF): https://docs.google.com/document/d/17_sxsXf3ZbdT7IAo0H9Ib8kadmn61ezU7PSleaOlY9I/export?format=pdf
 
 ## What he is hired for
 
@@ -26,11 +26,12 @@
 
 ## Current and recent work
 
-- Steven Hubbard LLC — Independent Consultant and Solutions Architect, Feb 2000 to present
+- Steven Hubbard LLC — Independent Solutions Architect and Senior Engineer, Jun 2022 to present
+- Mend Medical Wear — Lead Architect and Developer (contract), May 2026 to present
 - Eye Appeal Inc. — Senior Architect and Developer, Mar 2025 to Feb 2026
-- Horizon Media — Web Director and Solutions Architect, Oct 2024 to Dec 2025
+- Horizon Media / Night Market — Web Director and Solutions Architect, Oct 2023 to Mar 2024
 - Coup D'Etat — Senior Architect and Developer, Jan 2019 to Mar 2025
-- Lexmark — Front-End AEM Developer and Magento Architect, Oct 2022 to Mar 2023
+- Lexmark — Front-End AEM Developer and Architect, Oct 2022 to Mar 2023
 - TiVo — Senior Ecommerce Architect, Dec 2020 to May 2022
 
 ## Selected clients
@@ -41,8 +42,8 @@ Procter & Gamble, Frito-Lay, UCSF Children's Hospital, United Healthcare.
 ## Notes
 
 - 25+ years shipping for the web, since 1999.
-- Two years putting AI and LLM tooling into production workflows; formally AI-certified.
-- Education: BA Computer Science, Academy of Art University. Also University of Oregon, Portland State University.
+- About 18 months putting LLM tooling into production QA, code review, and documentation.
+- Education: BA (2000), Academy of Art University. Also University of Oregon, Portland State University.
 
 ## Key sections
 
