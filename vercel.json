@@ -3,6 +3,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/security-and-optimization", "destination": "/security-optimization", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/wp-content/uploads/2018/01/STEVEN-J-HUBBARD-RESUME-V14.pdf", "destination": "/resume", "permanent": true },
+    { "source": "/wp-content/uploads/2018/01/STEVEN-J-HUBBARD-RESUME-V10.pdf", "destination": "/resume", "permanent": true },
+    { "source": "/wp-content/uploads/2018/01/Steven_Hubbard_Resume_V3.docx", "destination": "/resume", "permanent": true },
     { "source": "/work", "destination": "/#work", "permanent": false }
   ],
   "headers": [

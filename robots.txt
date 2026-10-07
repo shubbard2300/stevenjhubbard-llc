@@ -2,6 +2,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # AI crawlers are welcome. This site exists to be found by people hiring
 # architects, and increasingly that search starts in an answer engine.
