@@ -1,8 +1,8 @@
 # Steven J. Hubbard
 
 > Solutions Architect and Senior Frontend Engineer with 25+ years building enterprise
-> digital platforms. Deep specialization in Adobe Experience Manager and Edge
-> Delivery Services, with commerce and CMS work across Shopify, Adobe Commerce,
+> digital platforms. Deep specialization in Adobe Experience Manager, with
+> commerce and CMS work across Shopify, Adobe Commerce,
 > and WordPress. Based on the US West Coast, available remote nationwide for
 > contract and full-time work.
 
@@ -19,7 +19,7 @@
 
 - Solution and domain architecture — as-is/to-be modeling, transformation roadmaps, technical debt tracking
 - Integration architecture — REST, GraphQL, SOAP/WSDL, WebMethods, event-driven and SOA patterns
-- Adobe Experience Manager and Edge Delivery Services
+- Adobe Experience Manager architecture and development
 - Ecommerce architecture and development — Adobe Commerce/Magento, Shopify, SFCC, WooCommerce
 - CMS development and migration — AEM, WordPress, Drupal, Squarespace
 - Data and reporting — Snowflake pipelines, SQL Server, ERP and commerce reconciliation
@@ -69,3 +69,9 @@ United States. Reachable at contact@stevenjhubbard.com or +1 (415) 359-7606.
 - [Logo and brand design](https://www.stevenjhubbard.com/logo-brand-design)
 - [AEM and CMS development](https://www.stevenjhubbard.com/cms-development)
 - [Security and optimization](https://www.stevenjhubbard.com/security-optimization)
+
+## Roles
+
+- [AEM architect](https://www.stevenjhubbard.com/aem-architect)
+- [Senior web developer](https://www.stevenjhubbard.com/web-developer)
+- [LLM and AI engineer: Claude, ChatGPT, RAG, agent workflows](https://www.stevenjhubbard.com/llm-engineer)
