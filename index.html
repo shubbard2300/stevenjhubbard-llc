@@ -1259,6 +1259,47 @@ footer{border-top:var(--rule);padding:26px 0}
 body.modal-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.modal-panel,.modal-backdrop{animation:none}}
 @media print{.modal{display:none!important}}
+
+/* ── Dynamic complementary gradient ─────────────────────────
+   Two glows on the daypart accent and one on its complement (hue + 175), over
+   a warm paper base. --sp is scroll progress 0-1, set by script, so the glows
+   drift as the page is read. Fixed pseudo-element rather than
+   background-attachment:fixed, which iOS ignores. With no script --sp falls
+   back to 0 and the gradient simply stands still. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(1100px 760px at calc(6% + var(--sp,0)*34%) calc(-6% + var(--sp,0)*46%),hsl(var(--accent-h) 100% 62% / .20),transparent 64%),
+    radial-gradient(980px 760px at calc(104% - var(--sp,0)*30%) calc(30% + var(--sp,0)*34%),hsl(calc(var(--accent-h) + 175) 95% 60% / .17),transparent 64%),
+    radial-gradient(1100px 720px at calc(-4% + var(--sp,0)*20%) 106%,hsl(calc(var(--accent-h) + 175) 90% 68% / .13),transparent 64%),
+    linear-gradient(180deg,#F8F6F1 0%,#F3F0E9 52%,#F7F4ED 100%);
+}
+@media print{body::before{display:none}}
+.marq{background:rgba(238,235,227,.55)}
+
+/* ── Hire-me dialog ───────────────────────────────────────── */
+.hire{
+  width:min(580px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;
+  margin:auto;padding:clamp(24px,3.4vw,38px);color:var(--ink);
+  background:var(--panel);border:var(--rule);
+  box-shadow:0 2px 6px rgba(21,23,28,.08),0 40px 90px -24px rgba(21,23,28,.38);
+}
+.hire::backdrop{background:rgba(245,243,238,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hire[open]{animation:pop .38s cubic-bezier(.16,1,.3,1)}
+.hire-x{
+  position:absolute;top:0;right:0;width:44px;height:44px;border:0;background:none;
+  color:var(--ink-2);font-size:1.25rem;line-height:1;cursor:pointer;transition:color .2s,background .2s;
+}
+.hire-x:hover{background:var(--accent);color:#fff}
+.hire h3{font-size:clamp(1.5rem,3vw,2rem);margin:10px 0 10px;font-variation-settings:"wdth" 106}
+.hire .lede{font-size:0.96875rem;max-width:none}
+.hire-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.hire .cform{margin-top:22px;padding-top:22px;border-top:var(--rule)}
+.hire .cform textarea{min-height:104px}
+/* scroll lock follows the dialog's own state, so it can't get stuck */
+body:has(dialog[open]){overflow:hidden}
+@media (prefers-reduced-motion:reduce){.hire[open]{animation:fade .25s ease}}
+@media print{.hire{display:none!important}}
 </style>
 
 <!-- <body> is explicit only so the noscript below lands in the body. Without it
@@ -1292,7 +1333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#numbers">Numbers</a>
       <a href="#feedback">Feedback</a>
     </nav>
-    <a class="btn btn--solid nav-cta" href="#contact">Hire me <i>&rarr;</i></a>
+    <a class="btn btn--solid nav-cta" href="#contact" data-hire aria-haspopup="dialog">Hire me <i>&rarr;</i></a>
     <button class="nav-burger" id="navBurger" type="button"
             aria-expanded="false" aria-controls="navPanel" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -2234,6 +2275,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 
+<dialog class="hire" id="hireModal" aria-labelledby="hireTitle">
+  <button class="hire-x" type="button" data-hire-close aria-label="Close">&times;</button>
+  <span class="mono">Hire me</span>
+  <h3 id="hireTitle">Let&rsquo;s talk about the work.</h3>
+  <p class="lede">Tell me what you&rsquo;re building, the stack, and rough timing. I usually reply within a day. Contract, contract-to-hire, fractional, or full-time.</p>
+  <div class="hire-actions">
+    <a class="btn btn--solid" href="mailto:contact@stevenjhubbard.com?subject=Project%20enquiry">Email me <i>&rarr;</i></a>
+    <a class="btn" href="tel:+14153597606">Call 415.359.7606</a>
+    <a class="btn" href="https://docs.google.com/document/d/17_sxsXf3ZbdT7IAo0H9Ib8kadmn61ezU7PSleaOlY9I/export?format=pdf" target="_blank" rel="noopener">Resume <i>&darr;</i></a>
+  </div>
+  <form class="cform" data-where="hire_modal" novalidate>
+    <div class="cform-row">
+      <div><label class="mono" for="hm-name">Your name</label><input id="hm-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+      <div><label class="mono" for="hm-email">Email</label><input id="hm-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+    </div>
+    <div><label class="mono" for="hm-message">Project or role</label><textarea id="hm-message" name="message" maxlength="4000" required placeholder="What you&rsquo;re building, the stack, and rough timing."></textarea></div>
+    <div class="cform-hp" aria-hidden="true"><label for="hm-company">Company</label><input id="hm-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+    <button class="btn btn--solid" type="submit">Send message <i>&rarr;</i></button>
+    <p class="cform-note mono" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+
 <footer>
   <div class="wrap foot-in">
     <span class="mono">&copy; 2026 Steven Hubbard LLC &mdash; All rights reserved</span>
@@ -2566,10 +2630,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   /* ── Contact form ─────────────────────────────────────── */
-  var cform = document.getElementById('cform');
-  if (cform) {
-    var cnote = document.getElementById('cformNote');
-    var cbtn  = document.getElementById('cformBtn');
+  document.querySelectorAll('.cform').forEach(function (cform) {
+    var cnote = cform.querySelector('.cform-note');
+    var cbtn  = cform.querySelector('button[type="submit"]');
+    var where = cform.getAttribute('data-where') || 'contact';
 
     function say(state, msg) {
       cnote.setAttribute('data-state', state);
@@ -2611,12 +2675,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         cform.reset();
         say('ok', 'Thanks \u2014 that reached me. I usually reply within a day.');
-        track('contact_form_submit', { link_location: 'contact' });
+        track('contact_form_submit', { link_location: where });
       })['catch'](function () {
         say('err', 'Could not send right now \u2014 please email contact@stevenjhubbard.com directly.');
       }).then(function () { cbtn.disabled = false; });
     });
-  }
+  });
 
   /* ── Project modal ────────────────────────────────────── */
   var modal   = document.getElementById('projectModal');
@@ -2916,6 +2980,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ── Smooth anchor offset for the fixed nav ───────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
+      if (a.hasAttribute('data-hire') && window.HTMLDialogElement) return; /* opens the dialog instead */
       var t = document.querySelector(a.getAttribute('href'));
       if (!t) return;
       e.preventDefault();
@@ -2925,6 +2990,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   });
+
+  /* ── Hire-me dialog ───────────────────────────────────── */
+  var hire = document.getElementById('hireModal');
+  if (hire && typeof hire.showModal === 'function') {
+    function hireClose() { hire.close(); }
+    document.querySelectorAll('[data-hire]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.remove('nav-open');
+        hire.showModal();
+        track('hire_modal_open', { link_location: 'nav' });
+      });
+    });
+    hire.querySelector('[data-hire-close]').addEventListener('click', hireClose);
+    /* a click that lands on the dialog element itself is a click on the backdrop */
+    hire.addEventListener('click', function (e) { if (e.target === hire) hireClose(); });
+  }
+
+  /* ── Scroll-linked gradient ───────────────────────────── */
+  if (!reduce) {
+    var spTick = false;
+    function sp() {
+      spTick = false;
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      document.documentElement.style.setProperty('--sp', h > 0 ? (window.scrollY / h).toFixed(3) : 0);
+    }
+    addEventListener('scroll', function () {
+      if (!spTick) { spTick = true; requestAnimationFrame(sp); }
+    }, {passive: true});
+    addEventListener('resize', sp);
+    sp();
+  }
 })();
 </script>
 </body>
