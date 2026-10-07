@@ -29,8 +29,11 @@ module.exports = async function handler(req, res) {
   var b = req.body || {};
 
   /* Honeypot. A person never sees this field, so anything in it is a bot.
-     Answer 200 so the bot records a success and does not retry. */
-  if (b.company) return res.status(200).json({ ok: true });
+     Answer 200 so the bot records a success and does not retry. The field is
+     deliberately not named like an address field (it was "company"): Chrome
+     autofills hidden inputs it recognises, which silently dropped real
+     messages while the form still said "Thanks". */
+  if (b.hp_trap) return res.status(200).json({ ok: true });
 
   var name    = String(b.name    || '').trim();
   var email   = String(b.email   || '').trim();

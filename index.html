@@ -2226,8 +2226,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <textarea id="cf-message" name="message" maxlength="4000" required placeholder="What you&rsquo;re building, the stack, and rough timing."></textarea>
         </div>
         <div class="cform-hp" aria-hidden="true">
-          <label for="cf-company">Company</label>
-          <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          <label for="cf-trap">Leave this field empty</label>
+          <input id="cf-trap" name="hp_trap" type="text" tabindex="-1" autocomplete="off">
         </div>
         <button class="btn btn--solid" id="cformBtn" type="submit">Send message <i>&rarr;</i></button>
         <p class="cform-note mono" id="cformNote" role="status" aria-live="polite"></p>
@@ -2291,7 +2291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><label class="mono" for="hm-email">Email</label><input id="hm-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
     </div>
     <div><label class="mono" for="hm-message">Project or role</label><textarea id="hm-message" name="message" maxlength="4000" required placeholder="What you&rsquo;re building, the stack, and rough timing."></textarea></div>
-    <div class="cform-hp" aria-hidden="true"><label for="hm-company">Company</label><input id="hm-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+    <div class="cform-hp" aria-hidden="true"><label for="hm-trap">Leave this field empty</label><input id="hm-trap" name="hp_trap" type="text" tabindex="-1" autocomplete="off"></div>
     <button class="btn btn--solid" type="submit">Send message <i>&rarr;</i></button>
     <p class="cform-note mono" role="status" aria-live="polite"></p>
   </form>
@@ -2647,7 +2647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         name:    els.name.value.trim(),
         email:   els.email.value.trim(),
         message: els.message.value.trim(),
-        company: els.company.value          /* honeypot */
+        hp_trap: els.hp_trap.value          /* honeypot */
       };
       if (!body.name || !body.email || !body.message) {
         say('err', 'Name, email, and a message, please.');

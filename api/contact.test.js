@@ -39,10 +39,17 @@ Promise.resolve()
   .then(function () { return call({ name: 'A'.repeat(121), email: 'a@b.co', message: 'hi' }); })
   .then(function (r) { assert.strictEqual(r.code, 400, 'over-length name must 400'); })
 
-  .then(function () { sent = null; return call({ name: 'Bot', email: 'b@b.co', message: 'spam', company: 'ACME' }); })
+  .then(function () { sent = null; return call({ name: 'Bot', email: 'b@b.co', message: 'spam', hp_trap: 'x' }); })
   .then(function (r) {
     assert.strictEqual(r.code, 200, 'honeypot must look like success');
     assert.strictEqual(sent, null, 'honeypot must NOT send mail');
+  })
+
+  /* Regression: an autofilled "company" must not swallow a real message. */
+  .then(function () { sent = null; return call({ name: 'Jane', email: 'jane@b.co', message: 'real', company: 'Acme' }); })
+  .then(function (r) {
+    assert.strictEqual(r.code, 200, 'autofilled company must still succeed');
+    assert.ok(sent, 'autofilled company must still send mail');
   })
 
   .then(function () { sent = null; return call(ok); })
