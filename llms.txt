@@ -60,3 +60,12 @@ Procter & Gamble, Frito-Lay, UCSF Children's Hospital, United Healthcare.
 
 Open to contract and full-time Solutions Architect roles, remote across the
 United States. Reachable at contact@stevenjhubbard.com or +1 (415) 359-7606.
+
+## Services
+
+- [Web design and UI](https://www.stevenjhubbard.com/web-design-ui)
+- [Ecommerce architecture](https://www.stevenjhubbard.com/ecommerce-architecture)
+- [Ecommerce development](https://www.stevenjhubbard.com/ecommerce-development)
+- [Logo and brand design](https://www.stevenjhubbard.com/logo-brand-design)
+- [AEM and CMS development](https://www.stevenjhubbard.com/cms-development)
+- [Security and optimization](https://www.stevenjhubbard.com/security-optimization)
