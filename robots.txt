@@ -30,5 +30,14 @@ User-agent: FacebookBot
 Allow: /
 User-agent: Amazonbot
 Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
 
 Sitemap: https://www.stevenjhubbard.com/sitemap.xml
