@@ -73,6 +73,7 @@ United States. Reachable at contact@stevenjhubbard.com or +1 (415) 359-7606.
 ## Roles
 
 - [AEM architect](https://www.stevenjhubbard.com/aem-architect)
+- [Integration architect: REST, GraphQL, SOAP, WebMethods, event-driven](https://www.stevenjhubbard.com/integration-architect)
 - [Senior web developer](https://www.stevenjhubbard.com/web-developer)
 - [LLM and AI engineer: Claude, ChatGPT, RAG, agent workflows](https://www.stevenjhubbard.com/llm-engineer)
 
